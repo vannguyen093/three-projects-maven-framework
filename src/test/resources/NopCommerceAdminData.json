@@ -1,0 +1,46 @@
+{
+  "customer": {
+    "firstName": "Alick",
+    "lastName": "Ricardon",
+    "email": "aricardon",
+    "password": "123456",
+    "gender": "Male",
+    "dateOfBirth": "03/08/1985",
+    "customerRole": "Guests",
+    "company": "Avamba",
+    "adminComment": "Create customer (Guests)"
+  },
+  "editCustomer": {
+    "editFirstName": "Teddie",
+    "editLastName": "Danbi",
+    "editEmail": "tdanbi",
+    "editPassword": "123456",
+    "editGender": "Male",
+    "editDateOfBirth": "08/21/2003",
+    "editCustomerRole": "Guests",
+    "editCompany": "Wikido",
+    "editAdminComment": "Create customer (Guests)"
+  },
+  "address": {
+    "addrFirstName": "Juieta",
+    "addrLastName": "Saphir",
+    "addrEmail": "jsaphir",
+    "addrCountry": "United States",
+    "addrState": "Utah",
+    "addrCity": "Salt Lake City",
+    "addressStreet": "5 Westport Parkway",
+    "addrZipCode": "84145",
+    "addrPhoneNumber": "801 668 6808"
+  },
+  "editAddress": {
+    "editAddrFirstName": "Helaina",
+    "editAddrLastName": "Durtnal",
+    "editAddrEmail": "hdurtnal",
+    "editAddrCountry": "United States",
+    "editAddrState": "Massachusetts",
+    "editAddrCity": "Cambridge",
+    "editAddressStreet": "789 Delladonna Road",
+    "editAddrZipCode": "02142",
+    "editAddrPhoneNumber": "508 897 0940"
+  }
+}

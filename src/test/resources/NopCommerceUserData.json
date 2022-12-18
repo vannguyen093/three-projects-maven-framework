@@ -1,0 +1,34 @@
+{
+  "user": {
+    "firstName": "Bard",
+    "lastName": "Rossander",
+    "email": "brossander",
+    "gender": "Male",
+    "password": "NoPuQQqLaOA",
+    "date": "23",
+    "month": "May",
+    "year": "1999"
+  },
+  "editUser": {
+    "editFirstName": "Jessica",
+    "editLastName": "Doe",
+    "editEmail": "jessicadoe",
+    "editGender": "Female",
+    "editPassword": "ijGIUmRT",
+    "editDate": "16",
+    "editMonth": "June",
+    "editYear": "2002"
+  },
+  "addressesInfo": {
+    "addressFirstName": "Lyman",
+    "addressLastName": "Epinoy",
+    "addressEmail": "lepinoy0",
+    "addressCompany": "Fisher-Bahringer",
+    "addressCountry": "United States",
+    "addressState": "Virginia",
+    "addressCity": "Virginia Beach",
+    "addressStreet": "172 Main Terrace",
+    "addressZip": "23454",
+    "addressPhone": "7575592200"
+  }
+}

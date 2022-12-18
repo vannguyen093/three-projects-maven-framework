@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="LiveGuru">
+
+    <parameter name="evnName" value="local" />
+
+    <listeners>
+        <listener class-name="commons.MethodListener"/>
+<!--        <listener class-name="reportConfig.ReportNGListener"/>-->
+            <listener class-name="reportConfig.ExtentReportListener"/>
+        <!--    <listener class-name="reportConfig.AllureTestListener"/>-->
+<!--        <listener class-name="org.uncommons.reportng.HTMLReporter" />-->
+<!--        <listener class-name="org.uncommons.reportng.JUnitXMLReporter" />-->
+    </listeners>
+
+    <test name="Run on CHROME">
+        <parameter name="browser" value="Chrome"/>
+<!--        <packages>-->
+<!--            <package name="com.user" />-->
+<!--        </packages>-->
+        <classes>
+            <class name="com.admin.Admin_04_Search_Select_Checkbox"/>
+        </classes>
+    </test>
+
+</suite>
