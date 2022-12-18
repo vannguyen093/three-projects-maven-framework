@@ -1,8 +1,8 @@
-package pageObjects;
+package pageObjects.bankGuru;
 
 import commons.BasePage;
 import org.openqa.selenium.WebDriver;
-import pageUIs.CustomerRegisSuccessPageUI;
+import pageUIs.bankGuru.CustomerRegisSuccessPageUI;
 
 public class CustomerRegisSuccessPageObject extends BasePage {
     WebDriver driver;

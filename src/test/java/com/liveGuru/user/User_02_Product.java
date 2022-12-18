@@ -1,23 +1,20 @@
-package com.user;
+package com.liveGuru.user;
 
 import com.aventstack.extentreports.Status;
 import commons.BaseTest;
 import org.aeonbits.owner.ConfigFactory;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.*;
-import pageObjects.*;
+import pageObjects.liveGuru.*;
 import reportConfig.ExtentTestManager;
-import ultilities.DataHelper;
 import ultilities.Environment;
+import ultilities.LiveGuruDataHelper;
 
 import java.lang.reflect.Method;
 
 public class User_02_Product extends BaseTest {
-    private WebDriver driver;
     Environment env;
-    DataHelper dataHelper;
-    private String firstName, lastName, emailAddress, password;
-    private String sonyPriceAtList, sonyPriceAtDetail;
+    LiveGuruDataHelper liveGuruDataHelper;
     UserHomePageObject userHomePage;
     UserMobilePageObject userMobilePage;
     UserProductDetailPageObject userProductDetailPage;
@@ -28,6 +25,10 @@ public class User_02_Product extends BaseTest {
     UserMyDashboardPageObject userMyDashboardPage;
     UserTVPageObject userTVPage;
     UserWishlistPageObject userWishlistPage;
+    private WebDriver driver;
+    private String firstName, lastName, emailAddress, password;
+    private String sonyPriceAtList, sonyPriceAtDetail, parentId;
+
     @Parameters({"browser", "evnName", "ipAddress", "portNumber", "osName", "osVersion"})
     @BeforeClass
     public void beforeClass(@Optional("firefox") String browserName, @Optional("local") String evnName, @Optional("Windows") String osName, @Optional("10") String osVersion, @Optional("localhost") String ipAddress, @Optional("4444") String portNumber) {
@@ -35,17 +36,17 @@ public class User_02_Product extends BaseTest {
         ConfigFactory.setProperty("env", environmentName);
         env = ConfigFactory.create(Environment.class);
 
-        driver = getBrowserDriver(browserName, env.userUrl(), evnName, osName, osVersion, ipAddress, portNumber);
-        dataHelper = DataHelper.getDataHelper();
+        driver = getBrowserDriver(browserName, env.userLiveGuruUrl(), evnName, osName, osVersion, ipAddress, portNumber);
+        liveGuruDataHelper = LiveGuruDataHelper.getDataHelper();
 
         userHomePage = PageGenerateManager.getUserHomePage(driver);
 
-        firstName = dataHelper.getFirstName();
-        lastName = dataHelper.getLastName();
-        emailAddress = dataHelper.getEmail();
-        password = dataHelper.getPassword();
+        firstName = liveGuruDataHelper.getFirstName();
+        lastName = liveGuruDataHelper.getLastName();
+        emailAddress = liveGuruDataHelper.getEmail();
+        password = liveGuruDataHelper.getPassword();
 
-        userHomePage.clickToFooterMenuLinkByMenuText(driver, "My Account");
+        userHomePage.clickToFooterMenuLinkLiveGuruByMenuText(driver, "My Account");
         userLoginPage = PageGenerateManager.getUserLoginPage(driver);
 
         userRegisterPage = userLoginPage.clickToCreateAccountButton();
@@ -90,13 +91,13 @@ public class User_02_Product extends BaseTest {
         userCartPage = userMobilePage.clickToAddToCartButtonByProductName("Sony Xperia");
 
         ExtentTestManager.getTest().log(Status.INFO, "Verify Discount Coupon - Step 03: Verify the added successful message is displayed");
-        verifyEquals(userCartPage.getCartMessage(),"Sony Xperia was added to your shopping cart.");
+        verifyEquals(userCartPage.getCartMessage(), "Sony Xperia was added to your shopping cart.");
 
         ExtentTestManager.getTest().log(Status.INFO, "Verify Discount Coupon - Step 04: Input to 'Discount Codes' text box with value 'GURU50'");
         userCartPage.inputToDiscountCodeTextBox("GURU50");
 
         ExtentTestManager.getTest().log(Status.INFO, "Verify Discount Coupon - Step 05: Verify the discount added successful text is displayed");
-        verifyEquals(userCartPage.getAddedDiscountText(),"-$5.00");
+        verifyEquals(userCartPage.getAddedDiscountText(), "-$5.00");
 
         ExtentTestManager.getTest().log(Status.INFO, "Verify Discount Coupon - Step 06: Verify the 'Grand Total' is change correct when added the coupon code");
         verifyEquals(userCartPage.getGrandTotalText(), "$95.00");
@@ -123,10 +124,10 @@ public class User_02_Product extends BaseTest {
         userCartPage.clickToButtonAtAdminSiteByButtonTitle("Update");
 
         ExtentTestManager.getTest().log(Status.INFO, "Verify Discount Coupon - Step 05: Verify the error message is displayed");
-        verifyEquals(userCartPage.getCartMessage(),"Some of the products cannot be ordered in requested quantity.");
+        verifyEquals(userCartPage.getCartMessage(), "Some of the products cannot be ordered in requested quantity.");
 
         ExtentTestManager.getTest().log(Status.INFO, "Verify Discount Coupon - Step 06: Verify the error message of product's quantity is displayed");
-        verifyEquals(userCartPage.getProductQtyErrMessage(),"* The maximum quantity allowed for purchase is 500.");
+        verifyEquals(userCartPage.getProductQtyErrMessage(), "* The maximum quantity allowed for purchase is 500.");
 
         ExtentTestManager.getTest().log(Status.INFO, "Verify Discount Coupon - Step 07: Click to 'Empty Cart' button");
         userCartPage.clickToButtonAtAdminSiteByButtonTitle("Empty Cart");
@@ -147,6 +148,7 @@ public class User_02_Product extends BaseTest {
         userMobilePage = PageGenerateManager.getUserMobilePage(driver);
 
         ExtentTestManager.getTest().log(Status.INFO, "Compare - Step 02: Click to 'Add To Compare' link of 'Sony Xperia'");
+        parentId = userMobilePage.getPageID(driver);
         userMobilePage.clickToAddToCompareLinkByProdName("Sony Xperia");
 
         ExtentTestManager.getTest().log(Status.INFO, "Compare - Step 03: Verify 'Sony Xperia' has been added to comparison list");
@@ -159,25 +161,26 @@ public class User_02_Product extends BaseTest {
         verifyEquals(userMobilePage.getProductAddedCompareMessage(), "The product IPhone has been added to comparison list.");
 
         ExtentTestManager.getTest().log(Status.INFO, "Compare - Step 06: Click to 'Compare' button");
-        userCompareWindowPage = userMobilePage.clickToCompareButton();
+        userMobilePage.clickToCompareButton();
+        userCompareWindowPage = userMobilePage.switchToCompareWindow("Products Comparison List - Magento Commerce");
 
         ExtentTestManager.getTest().log(Status.INFO, "Compare - Step 07: Verify the pop-up window with header 'Compare Products' is displayed");
         verifyTrue(userCompareWindowPage.isCompareWindowHeaderDisplayed());
 
-        ExtentTestManager.getTest().log(Status.INFO, "Compare - Step 08: Verify all infos of 'Sony Xperia' is displayed");
+        ExtentTestManager.getTest().log(Status.INFO, "Compare - Step 08: Verify all info of 'Sony Xperia' is displayed");
         verifyTrue(userCompareWindowPage.isProductTitleDisplayed("Sony Xperia"));
-        verifyTrue(userCompareWindowPage.isProductImageDisplayed("Sony Xperia", "xperia.jpg"));
+        verifyTrue(userCompareWindowPage.isProductImageDisplayed("Sony Xperia"));
         verifyTrue(userCompareWindowPage.isProductPriceDisplayed("Sony Xperia"));
         verifyTrue(userCompareWindowPage.isProductSKUDisplayed("MOB001"));
 
-        ExtentTestManager.getTest().log(Status.INFO, "Compare - Step 09: Verify all infos of 'iPhone' is displayed");
+        ExtentTestManager.getTest().log(Status.INFO, "Compare - Step 09: Verify all info of 'iPhone' is displayed");
         verifyTrue(userCompareWindowPage.isProductTitleDisplayed("IPhone"));
-        verifyTrue(userCompareWindowPage.isProductImageDisplayed("IPhone", "iphone.png"));
+        verifyTrue(userCompareWindowPage.isProductImageDisplayed("IPhone"));
         verifyTrue(userCompareWindowPage.isProductPriceDisplayed("IPhone"));
         verifyTrue(userCompareWindowPage.isProductSKUDisplayed("MOB0002"));
 
         ExtentTestManager.getTest().log(Status.INFO, "Compare - Step 10: Close the popup window");
-        userMobilePage = userCompareWindowPage.closeCompareWindow();
+        userMobilePage = userCompareWindowPage.closeCompareWindow(parentId);
     }
 
     @Test

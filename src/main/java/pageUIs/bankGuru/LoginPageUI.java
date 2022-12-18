@@ -1,4 +1,4 @@
-package pageUIs;
+package pageUIs.bankGuru;
 
 public class LoginPageUI {
     public static final String USER_ID_TEXTBOX = "css=input[name='uid']";

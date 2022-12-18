@@ -1,8 +1,8 @@
-package pageObjects;
+package pageObjects.liveGuru;
 
 import commons.BasePage;
 import org.openqa.selenium.WebDriver;
-import pageUIs.UserReviewPageUI;
+import pageUIs.liveGuru.UserReviewPageUI;
 
 public class UserReviewPageObject extends BasePage {
     WebDriver driver;

@@ -1,4 +1,4 @@
-package pageUIs;
+package pageUIs.liveGuru;
 
 public class AdminEditPendingReviewPageUI {
     public static final String STATUS_DROPDOWN_BY_SELECT_ITEM_TITLE = "css=select#status_id";

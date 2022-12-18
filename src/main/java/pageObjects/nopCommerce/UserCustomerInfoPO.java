@@ -1,9 +1,9 @@
-package pageObjects;
+package pageObjects.nopCommerce;
 
 import com.google.common.base.CaseFormat;
 import commons.BasePage;
 import org.openqa.selenium.WebDriver;
-import pageUIs.UserCustomerInfoPageUI;
+import pageUIs.nopCommerce.UserCustomerInfoPageUI;
 
 import java.time.Month;
 

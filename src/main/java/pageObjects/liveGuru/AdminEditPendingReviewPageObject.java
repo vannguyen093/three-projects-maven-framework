@@ -1,8 +1,8 @@
-package pageObjects;
+package pageObjects.liveGuru;
 
 import commons.BasePage;
 import org.openqa.selenium.WebDriver;
-import pageUIs.AdminEditPendingReviewPageUI;
+import pageUIs.liveGuru.AdminEditPendingReviewPageUI;
 
 public class AdminEditPendingReviewPageObject extends BasePage {
     WebDriver driver;

@@ -1,8 +1,8 @@
-package pageObjects;
+package pageObjects.bankGuru;
 
 import commons.BasePage;
 import org.openqa.selenium.WebDriver;
-import pageUIs.PreEditCustomerPageUI;
+import pageUIs.bankGuru.PreEditCustomerPageUI;
 
 public class PreEditCustomerPageObject extends BasePage {
     WebDriver driver;

@@ -17,6 +17,6 @@ public class GlobalConstants {
     public static final String BROWSER_NAME = "vannguyen_fXcelZ";
     public static final String BROWSER_ACCESS_KEY = "rg7tBFkEazjzz2kqmJoh";
     public static final String BROWSER_STACK_URL = "https://" + BROWSER_NAME + ":" + BROWSER_ACCESS_KEY + "@hub-cloud.browserstack.com/wd/hub";
-    public static final String USER_URL = "https://demo.nopcommerce.com/";
-    public static final String ADMIN_URL = "https://admin-demo.nopcommerce.com/login";
+    public static final String USER_LIVE_GURU_URL = "http://live.techpanda.org/";
+    public static final String ADMIN_LIVE_GURU_URL = "http://live.techpanda.org/index.php/backendlogin";
 }

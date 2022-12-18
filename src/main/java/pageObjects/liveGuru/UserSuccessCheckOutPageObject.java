@@ -1,8 +1,8 @@
-package pageObjects;
+package pageObjects.liveGuru;
 
 import commons.BasePage;
 import org.openqa.selenium.WebDriver;
-import pageUIs.UserSuccessCheckOutPageUI;
+import pageUIs.liveGuru.UserSuccessCheckOutPageUI;
 
 public class UserSuccessCheckOutPageObject extends BasePage {
     WebDriver driver;

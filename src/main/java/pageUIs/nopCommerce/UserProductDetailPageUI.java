@@ -1,4 +1,4 @@
-package pageUIs;
+package pageUIs.nopCommerce;
 
 public class UserProductDetailPageUI {
     public static final String PRODUCT_DETAIL_TITLE_TEXT = "css=div.product-name>h1";

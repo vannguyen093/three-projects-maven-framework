@@ -1,8 +1,8 @@
-package pageObjects;
+package pageObjects.nopCommerce;
 
 import commons.BasePage;
 import org.openqa.selenium.WebDriver;
-import pageUIs.UserSearchPageUI;
+import pageUIs.nopCommerce.UserSearchPageUI;
 
 public class UserSearchPO extends BasePage {
     WebDriver driver;

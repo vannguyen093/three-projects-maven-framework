@@ -1,4 +1,4 @@
-package pageUIs;
+package pageUIs.nopCommerce;
 
 public class AdminProductsPageUI {
     public static final String PRODUCTS_TEXTBOX_BY_TEXTBOX_ID = "xpath=//input[@id='%s']";

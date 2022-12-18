@@ -1,4 +1,4 @@
-package pageUIs;
+package pageUIs.liveGuru;
 
 public class AdminHomePageUI {
     public static final String CLOSE_POPUP_BUTTON = "xpath=//div[@id='message-popup-window']//a[@title='close']";

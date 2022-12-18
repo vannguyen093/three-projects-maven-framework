@@ -1,4 +1,4 @@
-package pageUIs;
+package pageUIs.liveGuru;
 
 public class UserReviewPageUI {
     public static final String RATING_RADIO_BUTTON_BY_NUMBER = "xpath=//input[@type='radio' and @value='3']";

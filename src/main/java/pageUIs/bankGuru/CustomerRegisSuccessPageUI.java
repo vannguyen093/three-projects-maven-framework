@@ -1,4 +1,4 @@
-package pageUIs;
+package pageUIs.bankGuru;
 
 public class CustomerRegisSuccessPageUI {
     public static final String CONTINUE_LINK = "xpath=//a[text()='Continue']";

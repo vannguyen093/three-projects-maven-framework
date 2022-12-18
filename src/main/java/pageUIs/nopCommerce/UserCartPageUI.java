@@ -1,4 +1,4 @@
-package pageUIs;
+package pageUIs.nopCommerce;
 
 public class UserCartPageUI {
     public static final String PRODUCT_CART_NAME = "xpath=//table//a[normalize-space()='%s']";

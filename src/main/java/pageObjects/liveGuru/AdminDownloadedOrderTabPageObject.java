@@ -1,8 +1,8 @@
-package pageObjects;
+package pageObjects.liveGuru;
 
 import commons.BasePage;
 import org.openqa.selenium.WebDriver;
-import pageUIs.AdminDownloadedOrderTabPageUI;
+import pageUIs.liveGuru.AdminDownloadedOrderTabPageUI;
 
 public class AdminDownloadedOrderTabPageObject extends BasePage {
     WebDriver driver;

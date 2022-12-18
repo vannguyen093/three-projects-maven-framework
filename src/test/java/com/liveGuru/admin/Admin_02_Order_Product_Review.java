@@ -1,4 +1,4 @@
-package com.admin;
+package com.liveGuru.admin;
 
 import com.aventstack.extentreports.Status;
 import commons.BaseTest;
@@ -6,16 +6,13 @@ import commons.GlobalConstants;
 import org.aeonbits.owner.ConfigFactory;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.*;
-import pageObjects.*;
+import pageObjects.liveGuru.*;
 import reportConfig.ExtentTestManager;
 import ultilities.Environment;
 
 import java.lang.reflect.Method;
 
-public class Admin_02_Order_Product_Review extends BaseTest{
-    private WebDriver driver;
-    private String adminUserName, adminPassword;
-    private String yourThoughtText, yourReviewText, yourNickName;
+public class Admin_02_Order_Product_Review extends BaseTest {
     Environment env;
     UserHomePageObject userHomePage;
     UserMobilePageObject userMobilePage;
@@ -27,6 +24,9 @@ public class Admin_02_Order_Product_Review extends BaseTest{
     AdminDownloadedOrderTabPageObject adminDownloadedOrderTabPage;
     AdminPendingReviewPageObject adminPendingReviewsPage;
     AdminEditPendingReviewPageObject adminEditPendingReviewPage;
+    private WebDriver driver;
+    private String adminUserName, adminPassword;
+    private String yourThoughtText, yourReviewText, yourNickName;
 
     @Parameters({"browser", "evnName", "ipAddress", "portNumber", "osName", "osVersion"})
     @BeforeClass
@@ -35,15 +35,15 @@ public class Admin_02_Order_Product_Review extends BaseTest{
         ConfigFactory.setProperty("env", environmentName);
         env = ConfigFactory.create(Environment.class);
 
-        driver = getBrowserDriver(browserName, env.adminUrl(), evnName, osName, osVersion, ipAddress, portNumber);
+        driver = getBrowserDriver(browserName, env.adminLiveGuruUrl(), evnName, osName, osVersion, ipAddress, portNumber);
 
         adminLoginPage = PageGenerateManager.getAdminLoginPage(driver);
 
         adminUserName = "user01";
         adminPassword = "guru99com";
 
-        yourThoughtText = "My thoughts " +generateFakeNumber();
-        yourReviewText = "My review " +generateFakeNumber();
+        yourThoughtText = "My thoughts " + generateFakeNumber();
+        yourReviewText = "My review " + generateFakeNumber();
         yourNickName = "VanNL";
     }
 
@@ -62,23 +62,23 @@ public class Admin_02_Order_Product_Review extends BaseTest{
         adminHomePage.closeAdminPopup();
 
         ExtentTestManager.getTest().log(Status.INFO, "Order - Step 04: Move to 'Orders' from 'Sales' menu");
-        adminHomePage.clickToSubMenuLevel1BySubMenuText(driver,"Sales","Orders");
+        adminHomePage.clickToSubMenuLevel1BySubMenuText(driver, "Sales", "Orders");
         adminOrderPage = PageGenerateManager.getAdminOrderPage(driver);
 
         ExtentTestManager.getTest().log(Status.INFO, "Order - Step 05: Select 'Canceled' in 'Status' dropdown");
         adminOrderPage.selectItemAtStatusDropdown("Canceled");
 
         ExtentTestManager.getTest().log(Status.INFO, "Order - Step 06: Click to 'Search' button");
-        adminOrderPage.clickToButtonAtAdminSiteByButtonTitle(driver,"Search");
+        adminOrderPage.clickToButtonAtAdminSiteByButtonTitle(driver, "Search");
 
         ExtentTestManager.getTest().log(Status.INFO, "Order - Step 07: Select the first order with the checkbox");
         adminOrderPage.selectFirstOrderByCheckbox();
 
         ExtentTestManager.getTest().log(Status.INFO, "Order - Step 08: Select 'Print Orders' at 'Actions' dropdown");
-        adminOrderPage.selectItemAtOrderActionDropdownByName(driver,"Print Orders");
+        adminOrderPage.selectItemAtOrderActionDropdownByName("Print Invoices");
 
         ExtentTestManager.getTest().log(Status.INFO, "Order - Step 09: Click to 'Submit' button");
-        adminOrderPage.clickToButtonAtAdminSiteByButtonTitle(driver,"Submit");
+        adminOrderPage.clickToButtonAtAdminSiteByButtonTitle(driver, "Submit");
 
         ExtentTestManager.getTest().log(Status.INFO, "Order - Step 10: Verify the error message is displayed");
         verifyTrue(adminOrderPage.isMessageAtAdminSiteDisplayed(driver));
@@ -87,17 +87,17 @@ public class Admin_02_Order_Product_Review extends BaseTest{
         adminOrderPage.selectItemAtStatusDropdown("Complete");
 
         ExtentTestManager.getTest().log(Status.INFO, "Order - Step 12: Click to 'Search' button");
-        adminOrderPage.clickToButtonAtAdminSiteByButtonTitle(driver,"Search");
+        adminOrderPage.clickToButtonAtAdminSiteByButtonTitle(driver, "Search");
 
         ExtentTestManager.getTest().log(Status.INFO, "Order - Step 13: Select the first order with the checkbox");
         adminOrderPage.selectFirstOrderByCheckbox();
 
         ExtentTestManager.getTest().log(Status.INFO, "Order - Step 14: Select 'Print Orders' at 'Actions' dropdown");
-        adminOrderPage.selectItemAtOrderActionDropdownByName(driver,"Print Orders");
+        adminOrderPage.selectItemAtOrderActionDropdownByName("Print Invoices");
         adminDownloadedOrderTabPage = PageGenerateManager.getAdminDownloadedOrderTabPage(driver);
 
         ExtentTestManager.getTest().log(Status.INFO, "Order - Step 15: Click to 'Submit' button");
-        adminOrderPage.clickToButtonAtAdminSiteByButtonTitle(driver,"Submit");
+        adminOrderPage.clickToButtonAtAdminSiteByButtonTitle(driver, "Submit");
 
         ExtentTestManager.getTest().log(Status.INFO, "Order - Step 16: Verify the new tab downloaded Order is displayed");
         verifyTrue(adminDownloadedOrderTabPage.isDownloadedOrderTabDisplayed());
@@ -114,7 +114,7 @@ public class Admin_02_Order_Product_Review extends BaseTest{
         ExtentTestManager.startTest(method.getName(), "Verify Product Review Mechanism At Admin Site");
 
         ExtentTestManager.getTest().log(Status.INFO, "Product Review At Admin Site - Step 01: Navigate to User Site");
-        adminLoginPage.openPageUrl(driver, GlobalConstants.USER_URL);
+        adminLoginPage.openPageUrl(driver, GlobalConstants.USER_LIVE_GURU_URL);
         userHomePage = PageGenerateManager.getUserHomePage(driver);
 
         ExtentTestManager.getTest().log(Status.INFO, "Product Review At Admin Site - Step 02: Navigate to 'Sony Xperia' review page");
@@ -140,7 +140,7 @@ public class Admin_02_Order_Product_Review extends BaseTest{
         verifyTrue(userReviewPage.isSuccessfullReviewMessageDisplayed());
 
         ExtentTestManager.getTest().log(Status.INFO, "Product Review At Admin Site - Step 09: Navigate to Admin Site");
-        userReviewPage.openPageUrl(driver, GlobalConstants.ADMIN_URL);
+        userReviewPage.openPageUrl(driver, GlobalConstants.ADMIN_LIVE_GURU_URL);
         adminHomePage = PageGenerateManager.getAdminHomePage(driver);
 
         ExtentTestManager.getTest().log(Status.INFO, "Product Review At Admin Site - Step 10: Input to 'User Name' text box with value '" + adminUserName + "'");
@@ -154,7 +154,7 @@ public class Admin_02_Order_Product_Review extends BaseTest{
         adminHomePage.closeAdminPopup();
 
         ExtentTestManager.getTest().log(Status.INFO, "Product Review At Admin Site - Step 13: Navigate to 'Pending Reviews' Page");
-        adminHomePage.clickToSubMenuLevel3BySubMenuText(driver,"Catalog", "Reviews and Ratings","Customer Reviews","Pending Reviews");
+        adminHomePage.clickToSubMenuLevel3BySubMenuText(driver, "Catalog", "Reviews and Ratings", "Customer Reviews", "Pending Reviews");
         adminPendingReviewsPage = PageGenerateManager.getAdminPendingReviewPage(driver);
 
         ExtentTestManager.getTest().log(Status.INFO, "Product Review At Admin Site - Step 14: Click the 'ID' tab on table header to sort review ascending");
@@ -174,7 +174,7 @@ public class Admin_02_Order_Product_Review extends BaseTest{
         adminPendingReviewsPage = adminEditPendingReviewPage.clickToButtonByButtonTitle("Save Review");
 
         ExtentTestManager.getTest().log(Status.INFO, "Product Review At Admin Site - Step 19: Navigate to User Site");
-        adminPendingReviewsPage.openPageUrl(driver, GlobalConstants.USER_URL);
+        adminPendingReviewsPage.openPageUrl(driver, GlobalConstants.USER_LIVE_GURU_URL);
         userHomePage = PageGenerateManager.getUserHomePage(driver);
 
         ExtentTestManager.getTest().log(Status.INFO, "Product Review At Admin Site - Step 20: Click the 'Mobile' link");

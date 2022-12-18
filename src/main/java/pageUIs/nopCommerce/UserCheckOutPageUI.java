@@ -1,4 +1,4 @@
-package pageUIs;
+package pageUIs.nopCommerce;
 
 public class UserCheckOutPageUI {
     public static final String CHECK_OUT_TEXTBOX_BY_ID = "xpath=//input[@id='%s']";

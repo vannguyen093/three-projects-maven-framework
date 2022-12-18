@@ -1,4 +1,4 @@
-package pageUIs;
+package pageUIs.nopCommerce;
 
 public class UserComparePageUI {
     public static final String PRODUCT_NAME_TEXT = "xpath=//tr[@class='product-name']//a[contains(text(),'%s')]";

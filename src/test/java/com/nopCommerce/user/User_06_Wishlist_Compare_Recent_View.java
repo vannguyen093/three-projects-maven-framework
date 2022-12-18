@@ -1,12 +1,13 @@
-package com.user;
+package com.nopCommerce.user;
 
 import com.aventstack.extentreports.Status;
 import commons.BaseTest;
-import data.UserDataMapper;
+import data.nopCommerce.NopCommerceUserDataMapper;
 import org.aeonbits.owner.ConfigFactory;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.*;
+import pageObjects.nopCommerce.*;
 import reportConfig.ExtentTestManager;
 import ultilities.Environment;
 
@@ -14,7 +15,7 @@ import java.lang.reflect.Method;
 
 public class User_06_Wishlist_Compare_Recent_View extends BaseTest {
 
-    UserDataMapper userData;
+    NopCommerceUserDataMapper userData;
     Environment env;
     UserHomePO userHomePage;
     UserRegisterPO userRegisterPage;
@@ -35,8 +36,8 @@ public class User_06_Wishlist_Compare_Recent_View extends BaseTest {
         ConfigFactory.setProperty("env", environmentName);
         env = ConfigFactory.create(Environment.class);
 
-        driver = getBrowserDriver(browserName, env.userUrl(), evnName, osName, osVersion, ipAddress, portNumber);
-        userData = UserDataMapper.getUserData();
+        driver = getBrowserDriver(browserName, env.userNopCommerceUrl(), evnName, osName, osVersion, ipAddress, portNumber);
+        userData = NopCommerceUserDataMapper.getUserData();
 
         userHomePage = PageGenerateManager.getUserHomePage(driver);
 
@@ -176,7 +177,7 @@ public class User_06_Wishlist_Compare_Recent_View extends BaseTest {
         userProductPage.clickToCloseMessageButton(driver);
 
         ExtentTestManager.getTest().log(Status.INFO, "Compare - Step 06: Click the 'Compare products list' link at footer menu");
-        userCartPage.clickToFooterMenuLinkByMenuText(driver, "Compare products list");
+        userCartPage.clickToFooterMenuLinkNopCommerceByMenuText(driver, "Compare products list");
         userComparePage = PageGenerateManager.getUserComparePage(driver);
 
         ExtentTestManager.getTest().log(Status.INFO, "Compare - Step 07: Verify the '" + compareProductTitle1 + "' is displayed at Compare page");
@@ -241,7 +242,7 @@ public class User_06_Wishlist_Compare_Recent_View extends BaseTest {
         userProductDetailPage = userProductPage.clickToProductTitleByText(recentProductTitle5);
 
         ExtentTestManager.getTest().log(Status.INFO, "Recent View - Step 11: Click the 'Recently viewed products' link at footer menu");
-        userProductDetailPage.clickToFooterMenuLinkByMenuText(driver, "Recently viewed products");
+        userProductDetailPage.clickToFooterMenuLinkNopCommerceByMenuText(driver, "Recently viewed products");
         userRecentViewPage = PageGenerateManager.getUserRecentViewPage(driver);
 
         ExtentTestManager.getTest().log(Status.INFO, "Recent View - Step 12: Verify the '" + recentProductTitle1 + "' is undisplayed");

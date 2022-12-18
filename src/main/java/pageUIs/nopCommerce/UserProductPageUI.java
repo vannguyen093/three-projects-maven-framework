@@ -1,4 +1,4 @@
-package pageUIs;
+package pageUIs.nopCommerce;
 
 public class UserProductPageUI {
     public static final String PRODUCT_TITLE_TEXT = "xpath=//h2[@class='product-title']";

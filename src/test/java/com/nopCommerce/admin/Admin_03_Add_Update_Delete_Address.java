@@ -1,8 +1,8 @@
-package com.admin;
+package com.nopCommerce.admin;
 
 import com.aventstack.extentreports.Status;
 import commons.BaseTest;
-import data.AdminDataMapper;
+import data.nopCommerce.NopCommerceAdminDataMapper;
 import org.aeonbits.owner.ConfigFactory;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
@@ -18,7 +18,7 @@ import java.lang.reflect.Method;
 
 public class Admin_03_Add_Update_Delete_Address extends BaseTest {
 
-    AdminDataMapper adminData;
+    NopCommerceAdminDataMapper adminData;
     Environment env;
     AdminLoginPO adminLoginPage;
     AdminDashboardPO adminDashboardPage;
@@ -34,8 +34,8 @@ public class Admin_03_Add_Update_Delete_Address extends BaseTest {
         ConfigFactory.setProperty("env", environmentName);
         env = ConfigFactory.create(Environment.class);
 
-        driver = getBrowserDriver(browserName, env.adminUrl(), evnName, osName, osVersion, ipAddress, portNumber);
-        adminData = AdminDataMapper.getAdminData();
+        driver = getBrowserDriver(browserName, env.adminNopCommerceUrl(), evnName, osName, osVersion, ipAddress, portNumber);
+        adminData = NopCommerceAdminDataMapper.getAdminData();
 
         adminLoginPage = PageGenerateManager.getAdminLoginPage(driver);
 
@@ -88,7 +88,7 @@ public class Admin_03_Add_Update_Delete_Address extends BaseTest {
         adminCustomersPage.clickToEditButtonByCustomerFullNameText(adminData.getAddrFirstName() + " " + addrLastName);
 
         ExtentTestManager.getTest().log(Status.INFO, "Add New Address - Step 07: Click the 'Address' tab");
-        adminCustomersPage.clickToCustomerTabByTabName("Address");
+        adminCustomersPage.clickToCustomerTabByTabName("Addresses");
 
         ExtentTestManager.getTest().log(Status.INFO, "Add New Address - Step 08: Click the 'Add new address' button");
         adminCustomersPage.clickToNewCustomerButtonByButtonText("Add new address");
@@ -180,7 +180,7 @@ public class Admin_03_Add_Update_Delete_Address extends BaseTest {
         adminCustomersPage.clickToEditButtonByCustomerFullNameText(adminData.getAddrFirstName() + " " + addrLastName);
 
         ExtentTestManager.getTest().log(Status.INFO, "Edit New Address - Step 08: Click the 'Address' tab at Customers Detail page");
-        adminCustomersPage.clickToCustomerTabByTabName("Address");
+        adminCustomersPage.clickToCustomerTabByTabName("Addresses");
 
         ExtentTestManager.getTest().log(Status.INFO, "Edit New Address - Step 08: Click the 'Edit' button link at Customers Detail page");
         adminCustomersPage.clickToCustomerAddressButtonLinkByEmailAndText(addrEmail, "Edit");
@@ -248,7 +248,10 @@ public class Admin_03_Add_Update_Delete_Address extends BaseTest {
         ExtentTestManager.getTest().log(Status.INFO, "Edit New Address - Step 29: Click the 'back to customer details' link at Edit Address page");
         adminCustomersPage.clickToBackToCustomerLinkByText("back to customer details");
 
-        ExtentTestManager.getTest().log(Status.INFO, "Edit New Address - Step 30: Verify '" + adminData.getEditAddrFirstName() + ", " + editAddrLastName + ", " + editAddrEmail + "' is displayed at Address Table at Customer Detail page");
+        ExtentTestManager.getTest().log(Status.INFO, "Edit New Address - Step 30: Click the 'Address' tab at Customers Detail page");
+        adminCustomersPage.clickToCustomerTabByTabName("Addresses");
+
+        ExtentTestManager.getTest().log(Status.INFO, "Edit New Address - Step 31: Verify '" + adminData.getEditAddrFirstName() + ", " + editAddrLastName + ", " + editAddrEmail + "' is displayed at Address Table at Customer Detail page");
         Assert.assertTrue(adminCustomersPage.isEditAddressDisplayed(adminData.getEditAddrFirstName(), editAddrLastName, editAddrEmail));
     }
 
@@ -278,7 +281,7 @@ public class Admin_03_Add_Update_Delete_Address extends BaseTest {
         adminCustomersPage.clickToEditButtonByCustomerFullNameText(adminData.getAddrFirstName() + " " + addrLastName);
 
         ExtentTestManager.getTest().log(Status.INFO, "Delete Address - Step 08: Click the 'Address' tab at Customers Detail page");
-        adminCustomersPage.clickToCustomerTabByTabName("Address");
+        adminCustomersPage.clickToCustomerTabByTabName("Addresses");
 
         ExtentTestManager.getTest().log(Status.INFO, "Delete Address - Step 09: Click the 'Delete' button link at Customers Detail page");
         adminCustomersPage.clickToCustomerAddressButtonLinkByEmailAndText(editAddrEmail, "Delete");
@@ -287,7 +290,7 @@ public class Admin_03_Add_Update_Delete_Address extends BaseTest {
         adminCustomersPage.acceptDeleteAlert();
 
         ExtentTestManager.getTest().log(Status.INFO, "Delete Address - Step 11: Click the 'Address' tab at Customers Detail page");
-        adminCustomersPage.clickToCustomerTabByTabName("Address");
+        adminCustomersPage.clickToCustomerTabByTabName("Addresses");
 
         ExtentTestManager.getTest().log(Status.INFO, "Delete Address - Step 12: Verify that the no data message is displayed");
         Assert.assertEquals(adminCustomersPage.getNoDataMessageTextAtAddressTable(), "No data available in table");

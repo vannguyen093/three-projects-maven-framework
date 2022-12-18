@@ -1,4 +1,4 @@
-package pageUIs;
+package pageUIs.liveGuru;
 
 public class UserAdvancedSearchPageUI {
     public static final String SEARCH_SETTING_TEXTBOX_BY_ID = "xpath=//input[@id='%s']";

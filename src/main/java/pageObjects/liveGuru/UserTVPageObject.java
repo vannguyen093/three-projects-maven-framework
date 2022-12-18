@@ -1,8 +1,8 @@
-package pageObjects;
+package pageObjects.liveGuru;
 
 import commons.BasePage;
 import org.openqa.selenium.WebDriver;
-import pageUIs.UserTVPageUI;
+import pageUIs.liveGuru.UserTVPageUI;
 
 public class UserTVPageObject extends BasePage {
     WebDriver driver;

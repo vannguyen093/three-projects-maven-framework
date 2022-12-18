@@ -1,4 +1,4 @@
-package pageUIs;
+package pageUIs.bankGuru;
 
 public class NewAccountPageUI {
     public static final String CREATE_NEW_ACCOUNT_SUCCESS_MESSAGE_TEXT = "css=p.heading3";

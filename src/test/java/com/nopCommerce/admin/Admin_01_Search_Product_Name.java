@@ -1,4 +1,4 @@
-package com.admin;
+package com.nopCommerce.admin;
 
 import com.aventstack.extentreports.Status;
 import commons.BaseTest;
@@ -29,7 +29,7 @@ public class Admin_01_Search_Product_Name extends BaseTest {
         ConfigFactory.setProperty("env", environmentName);
         env = ConfigFactory.create(Environment.class);
 
-        driver = getBrowserDriver(browserName, env.adminUrl(), evnName, osName, osVersion, ipAddress, portNumber);
+        driver = getBrowserDriver(browserName, env.adminNopCommerceUrl(), evnName, osName, osVersion, ipAddress, portNumber);
 
         adminLoginPage = PageGenerateManager.getAdminLoginPage(driver);
 

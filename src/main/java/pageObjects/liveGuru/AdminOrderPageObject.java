@@ -1,9 +1,9 @@
-package pageObjects;
+package pageObjects.liveGuru;
 
 import commons.BasePage;
 import org.openqa.selenium.WebDriver;
-import pageUIs.AdminOrderPageUI;
-import pageUIs.BasePageUI;
+import pageUIs.liveGuru.AdminOrderPageUI;
+import pageUIs.liveGuru.LiveGuruBasePageUI;
 
 public class AdminOrderPageObject extends BasePage {
     WebDriver driver;
@@ -12,7 +12,7 @@ public class AdminOrderPageObject extends BasePage {
         this.driver = driver;
     }
 
-    public void selectItemAtOrderActionDropdownByName(WebDriver driver, String actionName) {
+    public void selectItemAtOrderActionDropdownByName(String actionName) {
         waitForElementClickable(driver, AdminOrderPageUI.ACTIONS_AT_ORDER_PAGE_DROPDOWN);
         selectItemInDefaultDropdown(driver, AdminOrderPageUI.ACTIONS_AT_ORDER_PAGE_DROPDOWN, actionName);
     }
@@ -23,13 +23,13 @@ public class AdminOrderPageObject extends BasePage {
     }
 
     public void selectFirstOrderByCheckbox() {
-        waitForElementInvisible(driver, BasePageUI.LOADING_MASK);
+        waitForElementInvisible(driver, LiveGuruBasePageUI.LOADING_MASK);
         waitForElementClickable(driver, AdminOrderPageUI.FIRST_ORDER_CHECKBOX);
         checkToDefaultCheckboxRadio(driver, AdminOrderPageUI.FIRST_ORDER_CHECKBOX);
     }
 
     public void selectItemAtViewDropdown(String itemText) {
-        waitForElementInvisible(driver, BasePageUI.LOADING_MASK);
+        waitForElementInvisible(driver, LiveGuruBasePageUI.LOADING_MASK);
         waitForElementClickable(driver, AdminOrderPageUI.ORDER_VIEW_DROPDOWN);
         selectItemInDefaultDropdown(driver, AdminOrderPageUI.ORDER_VIEW_DROPDOWN, itemText);
         sleepInSecond(1);

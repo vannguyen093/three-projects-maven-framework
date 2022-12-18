@@ -1,12 +1,13 @@
-package com.user;
+package com.nopCommerce.user;
 
 import com.aventstack.extentreports.Status;
 import commons.BaseTest;
-import data.UserDataMapper;
+import data.nopCommerce.NopCommerceUserDataMapper;
 import org.aeonbits.owner.ConfigFactory;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.*;
+import pageObjects.nopCommerce.*;
 import reportConfig.ExtentTestManager;
 import ultilities.Environment;
 
@@ -14,7 +15,7 @@ import java.lang.reflect.Method;
 
 public class User_03_My_Account extends BaseTest {
 
-    UserDataMapper userData;
+    NopCommerceUserDataMapper userData;
     Environment env;
     UserHomePO userHomePage;
     UserLoginPO userLoginPage;
@@ -36,8 +37,8 @@ public class User_03_My_Account extends BaseTest {
         ConfigFactory.setProperty("env", environmentName);
         env = ConfigFactory.create(Environment.class);
 
-        driver = getBrowserDriver(browserName, env.userUrl(), evnName, osName, osVersion, ipAddress, portNumber);
-        userData = UserDataMapper.getUserData();
+        driver = getBrowserDriver(browserName, env.userNopCommerceUrl(), evnName, osName, osVersion, ipAddress, portNumber);
+        userData = NopCommerceUserDataMapper.getUserData();
 
         userHomePage = PageGenerateManager.getUserHomePage(driver);
 

@@ -1,4 +1,4 @@
-package com.admin;
+package com.liveGuru.admin;
 
 import com.aventstack.extentreports.Status;
 import commons.BaseTest;
@@ -6,19 +6,15 @@ import commons.GlobalConstants;
 import org.aeonbits.owner.ConfigFactory;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.*;
-import pageObjects.*;
+import pageObjects.liveGuru.*;
 import reportConfig.ExtentTestManager;
-import ultilities.DataHelper;
 import ultilities.Environment;
+import ultilities.LiveGuruDataHelper;
 
 import java.lang.reflect.Method;
 
-public class Admin_01_Create_Update_Delete_Account extends BaseTest{
-    private WebDriver driver;
-    private String firstName, lastName, fullName, emailAddress, password;
-    private String editFirstName, editLastName, editFullName, editEmailAddress;
-    private String adminUserName, adminPassword;
-    DataHelper dataHelper;
+public class Admin_01_Create_Update_Delete_Account extends BaseTest {
+    LiveGuruDataHelper liveGuruDataHelper;
     Environment env;
     UserHomePageObject userHomePage;
     UserLoginPageObject userLoginPage;
@@ -27,6 +23,10 @@ public class Admin_01_Create_Update_Delete_Account extends BaseTest{
     UserAccountInfoPageObject userAccountInfoPage;
     AdminLoginPageObject adminLoginPage;
     AdminHomePageObject adminHomePage;
+    private WebDriver driver;
+    private String firstName, lastName, fullName, emailAddress, password;
+    private String editFirstName, editLastName, editFullName, editEmailAddress;
+    private String adminUserName, adminPassword;
 
     @Parameters({"browser", "evnName", "ipAddress", "portNumber", "osName", "osVersion"})
     @BeforeClass
@@ -35,23 +35,23 @@ public class Admin_01_Create_Update_Delete_Account extends BaseTest{
         ConfigFactory.setProperty("env", environmentName);
         env = ConfigFactory.create(Environment.class);
 
-        driver = getBrowserDriver(browserName, env.userUrl(), evnName, osName, osVersion, ipAddress, portNumber);
-        dataHelper = DataHelper.getDataHelper();
+        driver = getBrowserDriver(browserName, env.userLiveGuruUrl(), evnName, osName, osVersion, ipAddress, portNumber);
+        liveGuruDataHelper = LiveGuruDataHelper.getDataHelper();
 
         userHomePage = PageGenerateManager.getUserHomePage(driver);
 
         adminUserName = "user01";
         adminPassword = "guru99com";
 
-        firstName = dataHelper.getFirstName();
-        lastName = dataHelper.getLastName();
+        firstName = liveGuruDataHelper.getFirstName();
+        lastName = liveGuruDataHelper.getLastName();
         fullName = firstName + " " + lastName;
-        emailAddress = dataHelper.getEmail();
-        password = dataHelper.getPassword();
-        editFirstName = dataHelper.getFirstName();
-        editLastName = dataHelper.getLastName();
+        emailAddress = liveGuruDataHelper.getEmail();
+        password = liveGuruDataHelper.getPassword();
+        editFirstName = liveGuruDataHelper.getFirstName();
+        editLastName = liveGuruDataHelper.getLastName();
         editFullName = editFirstName + " " + editLastName;
-        editEmailAddress = dataHelper.getEmail();
+        editEmailAddress = liveGuruDataHelper.getEmail();
     }
 
     @Test
@@ -59,7 +59,7 @@ public class Admin_01_Create_Update_Delete_Account extends BaseTest{
         ExtentTestManager.startTest(method.getName(), "Create Account At User Site");
 
         ExtentTestManager.getTest().log(Status.INFO, "Create Account - Step 01: Click to 'My Account' link");
-        userHomePage.clickToFooterMenuLinkByMenuText(driver, "My Account");
+        userHomePage.clickToFooterMenuLinkLiveGuruByMenuText(driver, "My Account");
         userLoginPage = PageGenerateManager.getUserLoginPage(driver);
 
         ExtentTestManager.getTest().log(Status.INFO, "Create Account - Step 02: Click to 'Create An Account' button");
@@ -93,7 +93,7 @@ public class Admin_01_Create_Update_Delete_Account extends BaseTest{
         ExtentTestManager.startTest(method.getName(), "Verify registered account at admin site");
 
         ExtentTestManager.getTest().log(Status.INFO, "Verify At Admin Site - Step 01: Open admin site");
-        userMyDashboardPage.openPageUrl(driver, GlobalConstants.ADMIN_URL);
+        userMyDashboardPage.openPageUrl(driver, GlobalConstants.ADMIN_LIVE_GURU_URL);
         adminLoginPage = PageGenerateManager.getAdminLoginPage(driver);
 
         ExtentTestManager.getTest().log(Status.INFO, "Verify At Admin Site - Step 02: Input to 'User Name' text box with value '" + adminUserName + "'");
@@ -118,11 +118,11 @@ public class Admin_01_Create_Update_Delete_Account extends BaseTest{
         ExtentTestManager.startTest(method.getName(), "Update Account At User Site");
 
         ExtentTestManager.getTest().log(Status.INFO, "Update Account - Step 01: Open User site");
-        adminHomePage.openPageUrl(driver, GlobalConstants.USER_URL);
+        adminHomePage.openPageUrl(driver, GlobalConstants.USER_LIVE_GURU_URL);
         userHomePage = PageGenerateManager.getUserHomePage(driver);
 
         ExtentTestManager.getTest().log(Status.INFO, "Update Account - Step 02: Click to 'My Account' link");
-        userHomePage.clickToFooterMenuLinkByMenuText(driver, "My Account");
+        userHomePage.clickToFooterMenuLinkLiveGuruByMenuText(driver, "My Account");
         userMyDashboardPage = PageGenerateManager.getUserMyDashboardPage(driver);
 
         ExtentTestManager.getTest().log(Status.INFO, "Update Account - Step 03: Click to 'Account Information' link at sidebar menu");
@@ -150,7 +150,7 @@ public class Admin_01_Create_Update_Delete_Account extends BaseTest{
         ExtentTestManager.startTest(method.getName(), "Verify updated an existing account at admin site");
 
         ExtentTestManager.getTest().log(Status.INFO, "Verify Updated At Admin Site - Step 01: Open admin site");
-        userMyDashboardPage.openPageUrl(driver, GlobalConstants.ADMIN_URL);
+        userMyDashboardPage.openPageUrl(driver, GlobalConstants.ADMIN_LIVE_GURU_URL);
         adminHomePage = PageGenerateManager.getAdminHomePage(driver);
 
         ExtentTestManager.getTest().log(Status.INFO, "Verify Updated At Admin Site - Step 02: Input '" + editFullName + "' in the 'Name' filter to search");
@@ -165,17 +165,17 @@ public class Admin_01_Create_Update_Delete_Account extends BaseTest{
         ExtentTestManager.startTest(method.getName(), "Delete an account at admin site");
 
         ExtentTestManager.getTest().log(Status.INFO, "Delete Account At Admin Site - Step 01: Open admin site");
-        adminHomePage.openPageUrl(driver, GlobalConstants.ADMIN_URL);
+        adminHomePage.openPageUrl(driver, GlobalConstants.ADMIN_LIVE_GURU_URL);
         adminHomePage = PageGenerateManager.getAdminHomePage(driver);
 
-        ExtentTestManager.getTest().log(Status.INFO, "Delete Account At Admin Site - Step 02: Select '" + fullName + "' by checkbox");
-        adminHomePage.selectAccountCheckboxByAccountFullName(fullName);
+        ExtentTestManager.getTest().log(Status.INFO, "Delete Account At Admin Site - Step 02: Select '" + editFullName + "' by checkbox");
+        adminHomePage.selectAccountCheckboxByAccountFullName(editFullName);
 
         ExtentTestManager.getTest().log(Status.INFO, "Delete Account At Admin Site - Step 03: Select 'Delete' in 'Actions' dropdown");
-        adminHomePage.selectItemAtCustomerActionDropdownByName(driver,"Delete");
+        adminHomePage.selectItemAtCustomerActionDropdownByName("Delete");
 
         ExtentTestManager.getTest().log(Status.INFO, "Delete Account At Admin Site - Step 04: Click to 'Submit' button");
-        adminHomePage.clickToButtonAtAdminSiteByButtonTitle(driver,"Submit");
+        adminHomePage.clickToButtonAtAdminSiteByButtonTitle(driver, "Submit");
 
         ExtentTestManager.getTest().log(Status.INFO, "Delete Account At Admin Site - Step 05: Accept alert");
         adminHomePage.acceptAlert(driver);
@@ -183,11 +183,11 @@ public class Admin_01_Create_Update_Delete_Account extends BaseTest{
         ExtentTestManager.getTest().log(Status.INFO, "Delete Account At Admin Site - Step 06: Verify that the account successfully deleted message is displayed");
         verifyTrue(adminHomePage.isMessageAtAdminSiteDisplayed(driver));
 
-        ExtentTestManager.getTest().log(Status.INFO, "Delete Account At Admin Site - Step 07: Input '" + fullName + "' in the 'Name' filter to search");
-        adminHomePage.inputToFilterByFilterName("name", fullName);
+        ExtentTestManager.getTest().log(Status.INFO, "Delete Account At Admin Site - Step 07: Input '" + editFullName + "' in the 'Name' filter to search");
+        adminHomePage.inputToFilterByFilterName("name", editFullName);
 
-        ExtentTestManager.getTest().log(Status.INFO, "Delete Account At Admin Site - Step 08: Verify '" + fullName +"' is undisplayed at admin site");
-        verifyTrue(adminHomePage.isDeleteAccountUndisplayed(fullName, emailAddress));
+        ExtentTestManager.getTest().log(Status.INFO, "Delete Account At Admin Site - Step 08: Verify '" + editFullName + "' is undisplayed at admin site");
+        verifyTrue(adminHomePage.isDeleteAccountUndisplayed(editFullName, emailAddress));
     }
 
     @AfterClass(alwaysRun = true)

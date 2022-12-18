@@ -1,4 +1,4 @@
-package data;
+package data.nopCommerce;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.DeserializationFeature;
@@ -7,7 +7,7 @@ import commons.GlobalConstants;
 
 import java.io.File;
 
-public class AdminDataMapper {
+public class NopCommerceAdminDataMapper {
 
     @JsonProperty("customer")
     Customer customer;
@@ -18,11 +18,11 @@ public class AdminDataMapper {
     @JsonProperty("editAddress")
     EditAddress editAddress;
 
-    public static AdminDataMapper getAdminData() {
+    public static NopCommerceAdminDataMapper getAdminData() {
         try {
             ObjectMapper mapper = new ObjectMapper();
             mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-            return mapper.readValue(new File(GlobalConstants.PROJECT_PATH + "/src/test/resources/AdminData.json"), AdminDataMapper.class);
+            return mapper.readValue(new File(GlobalConstants.PROJECT_PATH + "/src/test/resources/NopCommerceAdminData.json"), NopCommerceAdminDataMapper.class);
         } catch (Exception ex) {
             ex.printStackTrace();
             return null;

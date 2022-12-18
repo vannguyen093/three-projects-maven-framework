@@ -1,4 +1,4 @@
-package pageUIs;
+package pageUIs.bankGuru;
 
 public class NewCustomerPageUI {
     public static final String DYNAMIC_ELEMENT_BY_ELEMENT_NAME = "xpath=//input[@name='%s']";

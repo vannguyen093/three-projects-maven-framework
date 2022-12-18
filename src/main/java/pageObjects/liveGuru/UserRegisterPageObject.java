@@ -1,9 +1,9 @@
-package pageObjects;
+package pageObjects.liveGuru;
 
 import commons.BasePage;
 import org.openqa.selenium.WebDriver;
-import pageUIs.UserMyDashboardPageUI;
-import pageUIs.UserRegisterPageUI;
+import pageUIs.liveGuru.UserMyDashboardPageUI;
+import pageUIs.liveGuru.UserRegisterPageUI;
 
 public class UserRegisterPageObject extends BasePage {
     WebDriver driver;

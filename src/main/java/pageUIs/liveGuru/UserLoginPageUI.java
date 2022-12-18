@@ -1,4 +1,4 @@
-package pageUIs;
+package pageUIs.liveGuru;
 
 public class UserLoginPageUI {
     public static final String LOGIN_TEXTBOX_BY_ID = "xpath=//input[@id='%s']";

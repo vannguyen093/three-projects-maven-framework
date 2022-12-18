@@ -1,9 +1,8 @@
-package pageObjects;
+package pageObjects.liveGuru;
 
 import commons.BasePage;
 import org.openqa.selenium.WebDriver;
-import pageUIs.UserMobilePageUI;
-import pageUIs.UserProductDetailPageUI;
+import pageUIs.liveGuru.UserProductDetailPageUI;
 
 public class UserProductDetailPageObject extends BasePage {
     WebDriver driver;

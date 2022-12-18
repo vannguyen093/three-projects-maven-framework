@@ -1,25 +1,27 @@
-package com.admin;
+package com.liveGuru.admin;
 
 import com.aventstack.extentreports.Status;
 import commons.BaseTest;
 import org.aeonbits.owner.ConfigFactory;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.*;
-import pageObjects.*;
+import pageObjects.liveGuru.AdminHomePageObject;
+import pageObjects.liveGuru.AdminLoginPageObject;
+import pageObjects.liveGuru.AdminOrderPageObject;
+import pageObjects.liveGuru.PageGenerateManager;
 import reportConfig.ExtentTestManager;
 import ultilities.Environment;
 
 import java.lang.reflect.Method;
 
-public class Admin_04_Search_Select_Checkbox extends BaseTest{
-    private WebDriver driver;
-    private String adminUserName, adminPassword;
-    private String customerID, fullName, emailAddress;
+public class Admin_04_Search_Select_Checkbox extends BaseTest {
     Environment env;
     AdminLoginPageObject adminLoginPage;
     AdminHomePageObject adminHomePage;
-    AdminInvoicePageObject adminInvoicePage;
     AdminOrderPageObject adminOrderPage;
+    private WebDriver driver;
+    private String adminUserName, adminPassword;
+    private String customerID, fullName, emailAddress;
 
     @Parameters({"browser", "evnName", "ipAddress", "portNumber", "osName", "osVersion"})
     @BeforeClass
@@ -28,7 +30,7 @@ public class Admin_04_Search_Select_Checkbox extends BaseTest{
         ConfigFactory.setProperty("env", environmentName);
         env = ConfigFactory.create(Environment.class);
 
-        driver = getBrowserDriver(browserName, env.adminUrl(), evnName, osName, osVersion, ipAddress, portNumber);
+        driver = getBrowserDriver(browserName, env.adminLiveGuruUrl(), evnName, osName, osVersion, ipAddress, portNumber);
 
         adminLoginPage = PageGenerateManager.getAdminLoginPage(driver);
 
@@ -40,7 +42,7 @@ public class Admin_04_Search_Select_Checkbox extends BaseTest{
         emailAddress = "Kanthasami@gmail.com";
     }
 
-//    @Test
+    @Test
     public void TC_10_Search(Method method) {
         ExtentTestManager.startTest(method.getName(), "Verify search functionality");
 

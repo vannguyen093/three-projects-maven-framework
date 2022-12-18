@@ -1,4 +1,4 @@
-package pageUIs;
+package pageUIs.nopCommerce;
 
 public class UserLoginPageUI {
     public static final String LOGIN_TEXTBOX_BY_TEXTBOX_ID = "xpath=//input[@id='%s']";

@@ -1,4 +1,4 @@
-package pageUIs;
+package pageUIs.nopCommerce;
 
 public class UserWishlistPageUI {
     public static final String PRODUCT_WISHLIST_NAME = "xpath=//table//a[normalize-space()='%s']";

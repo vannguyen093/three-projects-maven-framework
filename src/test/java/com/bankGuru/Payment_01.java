@@ -1,13 +1,13 @@
-package com.bankguru.payment;
+package com.bankGuru;
 
 import com.aventstack.extentreports.Status;
 import commons.BaseTest;
 import org.aeonbits.owner.ConfigFactory;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.*;
-import pageObjects.*;
+import pageObjects.bankGuru.*;
 import reportConfig.ExtentTestManager;
-import ultilities.DataHelper;
+import ultilities.BankGuruDataHelper;
 import ultilities.Environment;
 
 import java.lang.reflect.Method;
@@ -26,7 +26,7 @@ public class Payment_01 extends BaseTest {
     private String customerName, dateOfBirth, address, city, state, pin, mobileNumber, email, customerPassword;
     private String editAddress, editCity, editState, editPin, editMobileNumber, editEmail;
     private String userID, password, customerID, accountType, initialDeposit;
-    private DataHelper dataHelper;
+    private BankGuruDataHelper bankGuruDataHelper;
 
     @Parameters({"browser", "evnName", "ipAddress", "portNumber", "osName", "osVersion"})
     @BeforeClass
@@ -35,44 +35,28 @@ public class Payment_01 extends BaseTest {
         ConfigFactory.setProperty("env", environmentName);
         env = ConfigFactory.create(Environment.class);
 
-        driver = getBrowserDriver(browserName, env.appUrl(), evnName, osName, osVersion, ipAddress, portNumber);
+        driver = getBrowserDriver(browserName, env.userBankGuruUrl(), evnName, osName, osVersion, ipAddress, portNumber);
 
         loginPage = PageGenerateManager.getLoginPage(driver);
-//        userData = UserDataMapper.getUserData();
-        dataHelper = DataHelper.getDataHelper();
+        bankGuruDataHelper = BankGuruDataHelper.getDataHelper();
         userID = "mngr460024";
         password = "EjyjEdE";
 
-//        customerName = userData.getCustomerName();
-        customerName = dataHelper.getCustomerName();
-//        dateOfBirth = userData.getDateOfBirth();
-//        address = userData.getAddress();
-        address = dataHelper.getAddress();
-//        city = userData.getCity();
-        city = dataHelper.getCity();
-//        state = userData.getState();
-        state = dataHelper.getState();
-//        pin = userData.getPin();
+        customerName = bankGuruDataHelper.getCustomerName();
+        address = bankGuruDataHelper.getAddress();
+        city = bankGuruDataHelper.getCity();
+        state = bankGuruDataHelper.getState();
         pin = "123456";
-//        mobileNumber = userData.getMobileNumber();
         mobileNumber = "0905" + generateFakeNumber();
-//        email = userData.getEmail() + generateFakeNumber() + "@gmail.com";
-        email = dataHelper.getEmail();
-//        customerPassword = userData.getPassword();
-        customerPassword = dataHelper.getPassword();
+        email = bankGuruDataHelper.getEmail();
+        customerPassword = bankGuruDataHelper.getPassword();
 
-//        editAddress = userData.getAddress() + " " + generateFakeNumber();
-        editAddress = dataHelper.getAddress();
-//        editCity = userData.getCity() + generateFakeNumber();
-        editCity = dataHelper.getCity();
-//        editState = userData.getState() + generateFakeNumber();
-        editState = dataHelper.getState();
-//        editPin = userData.getEditPin();
+        editAddress = bankGuruDataHelper.getAddress();
+        editCity = bankGuruDataHelper.getCity();
+        editState = bankGuruDataHelper.getState();
         editPin = "456312";
-//        editMobileNumber = userData.getEditMobileNumber();
         editMobileNumber = "0905" + generateFakeNumber();
-//        editEmail = userData.getEmail() + generateFakeNumber() + "@gmail.com";
-        editEmail = dataHelper.getEmail();
+        editEmail = bankGuruDataHelper.getEmail();
 
         log.info("Pre Condition - Step 01: Input to 'UserID' with value: '" + userID + "'");
         loginPage.inputToUserUI(userID);
@@ -90,6 +74,7 @@ public class Payment_01 extends BaseTest {
     @Test
     public void Payment_01_Create_New_Customer(Method method) {
         ExtentTestManager.startTest(method.getName(), "Create New Customer");
+
         ExtentTestManager.getTest().log(Status.INFO, "Create New Customer - Step 01: Open 'New Customer' page");
         homePage.clickToMenuLinkByMenuText(driver, "New Customer");
         newCustomerPage = PageGenerateManager.getNewCustomerPage(driver);
@@ -165,6 +150,7 @@ public class Payment_01 extends BaseTest {
     @Test
     public void Payment_02_Edit_Customer(Method method) {
         ExtentTestManager.startTest(method.getName(), "Edit Customer");
+
         ExtentTestManager.getTest().log(Status.INFO, "Edit Customer - Step 01: Open 'Edit Customer' page");
         homePage.clickToMenuLinkByMenuText(driver, "Edit Customer");
         preEditCustomerPage = PageGenerateManager.getPreEditCustomerPage(driver);
@@ -197,22 +183,6 @@ public class Payment_01 extends BaseTest {
         ExtentTestManager.getTest().log(Status.INFO, "Edit Customer - Step 10: Click to 'Submit' button");
         editCustomerPage.clickToSubmitButton(driver);
         preEditCustomerPage = PageGenerateManager.getPreEditCustomerPage(driver);
-    }
-
-    public void Payment_03_Create_New_Account(Method method) {
-        ExtentTestManager.startTest(method.getName(), "Create New Account with existing Customer ID");
-        ExtentTestManager.getTest().log(Status.INFO, "Create New Account - Step 01: Open 'New Account' page");
-        preEditCustomerPage.clickToMenuLinkByMenuText(driver, "New Account");
-        preNewAccountPage = PageGenerateManager.getPreNewAccountPage(driver);
-
-        ExtentTestManager.getTest().log(Status.INFO, "Create New Account  - Step 01: Open 'Edit Customer' page");
-        ExtentTestManager.getTest().log(Status.INFO, "Create New Account  - Step 02: Input to 'Customer ID' with existing customer ID: '" + customerID + "'");
-        ExtentTestManager.getTest().log(Status.INFO, "Create New Account  - Step 03: Select item at 'Account type' dropdown with value: ''" + accountType + "'");
-        ExtentTestManager.getTest().log(Status.INFO, "Create New Account  - Step 04: Input to 'Initial deposit' with value: '" + initialDeposit + "'");
-        ExtentTestManager.getTest().log(Status.INFO, "Create New Account - Step 05: Click to 'Submit' button");
-        preNewAccountPage.clickToSubmitButton(driver);
-        ExtentTestManager.getTest().log(Status.INFO, "Create New Account - Step 06: Verify the create successfully message is displayed");
-        ExtentTestManager.getTest().log(Status.INFO, "Create New Account - Step 07: Verify the 'Current Amount' is exactly with 'Initial deposit' value: '" + initialDeposit + "'");
     }
 
     @AfterClass(alwaysRun = true)

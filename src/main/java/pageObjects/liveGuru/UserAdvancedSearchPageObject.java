@@ -1,8 +1,8 @@
-package pageObjects;
+package pageObjects.liveGuru;
 
 import commons.BasePage;
 import org.openqa.selenium.WebDriver;
-import pageUIs.UserAdvancedSearchPageUI;
+import pageUIs.liveGuru.UserAdvancedSearchPageUI;
 
 public class UserAdvancedSearchPageObject extends BasePage {
     WebDriver driver;

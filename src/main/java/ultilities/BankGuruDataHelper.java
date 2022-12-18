@@ -4,12 +4,12 @@ import com.github.javafaker.Faker;
 
 import java.util.Locale;
 
-public class DataHelper {
+public class BankGuruDataHelper {
     private Locale local = new Locale("en");
     private Faker faker = new Faker(local);
 
-    public static DataHelper getDataHelper() {
-        return new DataHelper();
+    public static BankGuruDataHelper getDataHelper() {
+        return new BankGuruDataHelper();
     }
 
     public String getCustomerName() {

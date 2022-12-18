@@ -1,8 +1,8 @@
-package pageObjects;
+package pageObjects.liveGuru;
 
 import commons.BasePage;
 import org.openqa.selenium.WebDriver;
-import pageUIs.UserAccountInfoPageUI;
+import pageUIs.liveGuru.UserAccountInfoPageUI;
 
 public class UserAccountInfoPageObject extends BasePage {
     WebDriver driver;

@@ -1,12 +1,11 @@
-package pageObjects;
+package pageObjects.liveGuru;
 
 import commons.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import pageUIs.AdminInvoicePageUI;
-import pageUIs.BasePageUI;
+import pageUIs.liveGuru.AdminInvoicePageUI;
+import pageUIs.liveGuru.LiveGuruBasePageUI;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -19,7 +18,7 @@ public class AdminInvoicePageObject extends BasePage {
     }
 
     public void clickToSortInvoiceTabByName(String tabName) {
-        waitForElementInvisible(driver, BasePageUI.LOADING_MASK);
+        waitForElementInvisible(driver, LiveGuruBasePageUI.LOADING_MASK);
         waitForElementClickable(driver, AdminInvoicePageUI.INVOICE_TAB_BY_TAB_NAME, tabName);
         clickToElement(driver, AdminInvoicePageUI.INVOICE_TAB_BY_TAB_NAME, tabName);
         sleepInSecond(1);

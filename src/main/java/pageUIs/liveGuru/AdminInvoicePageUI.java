@@ -1,4 +1,4 @@
-package pageUIs;
+package pageUIs.liveGuru;
 
 public class AdminInvoicePageUI {
     public static final String INVOICE_TAB_BY_TAB_NAME = "xpath=//tr[@class='headings']//a[@name='%s']";

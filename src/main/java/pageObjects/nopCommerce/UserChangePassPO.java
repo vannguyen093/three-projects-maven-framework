@@ -1,8 +1,8 @@
-package pageObjects;
+package pageObjects.nopCommerce;
 
 import commons.BasePage;
 import org.openqa.selenium.WebDriver;
-import pageUIs.UserChangePassPageUI;
+import pageUIs.nopCommerce.UserChangePassPageUI;
 
 public class UserChangePassPO extends BasePage {
     WebDriver driver;

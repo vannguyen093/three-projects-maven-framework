@@ -1,8 +1,8 @@
-package pageObjects;
+package pageObjects.nopCommerce;
 
 import commons.BasePage;
 import org.openqa.selenium.WebDriver;
-import pageUIs.UserRecentViewPageUI;
+import pageUIs.nopCommerce.UserRecentViewPageUI;
 
 public class UserRecentViewPO extends BasePage {
     WebDriver driver;

@@ -1,9 +1,9 @@
-package pageObjects;
+package pageObjects.nopCommerce;
 
 import commons.BasePage;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import pageUIs.AdminCustomersPageUI;
+import pageUIs.nopCommerce.AdminCustomersPageUI;
 
 public class AdminCustomersPO extends BasePage {
     WebDriver driver;

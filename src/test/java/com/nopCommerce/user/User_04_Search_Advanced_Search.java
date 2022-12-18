@@ -1,16 +1,16 @@
-package com.user;
+package com.nopCommerce.user;
 
 import com.aventstack.extentreports.Status;
 import commons.BaseTest;
-import data.UserDataMapper;
+import data.nopCommerce.NopCommerceUserDataMapper;
 import org.aeonbits.owner.ConfigFactory;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.*;
-import pageObjects.PageGenerateManager;
-import pageObjects.UserHomePO;
-import pageObjects.UserRegisterPO;
-import pageObjects.UserSearchPO;
+import pageObjects.nopCommerce.PageGenerateManager;
+import pageObjects.nopCommerce.UserHomePO;
+import pageObjects.nopCommerce.UserRegisterPO;
+import pageObjects.nopCommerce.UserSearchPO;
 import reportConfig.ExtentTestManager;
 import ultilities.Environment;
 
@@ -18,7 +18,7 @@ import java.lang.reflect.Method;
 
 public class User_04_Search_Advanced_Search extends BaseTest {
 
-    UserDataMapper userData;
+    NopCommerceUserDataMapper userData;
     Environment env;
     UserHomePO userHomePage;
     UserRegisterPO userRegisterPage;
@@ -33,8 +33,8 @@ public class User_04_Search_Advanced_Search extends BaseTest {
         ConfigFactory.setProperty("env", environmentName);
         env = ConfigFactory.create(Environment.class);
 
-        driver = getBrowserDriver(browserName, env.userUrl(), evnName, osName, osVersion, ipAddress, portNumber);
-        userData = UserDataMapper.getUserData();
+        driver = getBrowserDriver(browserName, env.userNopCommerceUrl(), evnName, osName, osVersion, ipAddress, portNumber);
+        userData = NopCommerceUserDataMapper.getUserData();
 
         userHomePage = PageGenerateManager.getUserHomePage(driver);
 
@@ -64,7 +64,7 @@ public class User_04_Search_Advanced_Search extends BaseTest {
         ExtentTestManager.startTest(method.getName(), "Search with empty data");
 
         ExtentTestManager.getTest().log(Status.INFO, "Empty Data - Step 01: Click to 'Search' link at Footer Menu");
-        userHomePage.clickToFooterMenuLinkByMenuText(driver, "Search");
+        userHomePage.clickToFooterMenuLinkNopCommerceByMenuText(driver, "Search");
         userSearchPage = PageGenerateManager.getUserSearchPage(driver);
 
         ExtentTestManager.getTest().log(Status.INFO, "Empty Data - Step 02: Click the 'Search' button");
@@ -79,7 +79,7 @@ public class User_04_Search_Advanced_Search extends BaseTest {
         ExtentTestManager.startTest(method.getName(), "Search with data not exist");
 
         ExtentTestManager.getTest().log(Status.INFO, "Data Not Exist - Step 01: Click to 'Search' link at Footer Menu");
-        userHomePage.clickToFooterMenuLinkByMenuText(driver, "Search");
+        userHomePage.clickToFooterMenuLinkNopCommerceByMenuText(driver, "Search");
         userSearchPage = PageGenerateManager.getUserSearchPage(driver);
 
         ExtentTestManager.getTest().log(Status.INFO, "Data Not Exist - Step 02: Input '" + notExistData + "' into 'Search' text box");
@@ -97,7 +97,7 @@ public class User_04_Search_Advanced_Search extends BaseTest {
         ExtentTestManager.startTest(method.getName(), "Search with relative data");
 
         ExtentTestManager.getTest().log(Status.INFO, "Relative Data - Step 01: Click to 'Search' link at Footer Menu");
-        userHomePage.clickToFooterMenuLinkByMenuText(driver, "Search");
+        userHomePage.clickToFooterMenuLinkNopCommerceByMenuText(driver, "Search");
         userSearchPage = PageGenerateManager.getUserSearchPage(driver);
 
         ExtentTestManager.getTest().log(Status.INFO, "Relative Data - Step 02: Input '" + relativeData + "' into 'Search' text box");
@@ -115,7 +115,7 @@ public class User_04_Search_Advanced_Search extends BaseTest {
         ExtentTestManager.startTest(method.getName(), "Search with relative data");
 
         ExtentTestManager.getTest().log(Status.INFO, "Relative Data - Step 01: Click to 'Search' link at Footer Menu");
-        userHomePage.clickToFooterMenuLinkByMenuText(driver, "Search");
+        userHomePage.clickToFooterMenuLinkNopCommerceByMenuText(driver, "Search");
         userSearchPage = PageGenerateManager.getUserSearchPage(driver);
 
         ExtentTestManager.getTest().log(Status.INFO, "Relative Data - Step 02: Input '" + absoluteData + "' into 'Search' text box");
@@ -133,7 +133,7 @@ public class User_04_Search_Advanced_Search extends BaseTest {
         ExtentTestManager.startTest(method.getName(), "Advanced Search with parent categories");
 
         ExtentTestManager.getTest().log(Status.INFO, "Advanced Search With Parent Categories - Step 01: Click to 'Search' link at Footer Menu");
-        userHomePage.clickToFooterMenuLinkByMenuText(driver, "Search");
+        userHomePage.clickToFooterMenuLinkNopCommerceByMenuText(driver, "Search");
         userSearchPage = PageGenerateManager.getUserSearchPage(driver);
 
         ExtentTestManager.getTest().log(Status.INFO, "Advanced Search With Parent Categories - Step 02: Input '" + advancedSearchData + "' into 'Search' text box");
@@ -157,7 +157,7 @@ public class User_04_Search_Advanced_Search extends BaseTest {
         ExtentTestManager.startTest(method.getName(), "Advanced Search with sub categories");
 
         ExtentTestManager.getTest().log(Status.INFO, "Advanced Search With Sub Categories - Step 01: Click to 'Search' link at Footer Menu");
-        userHomePage.clickToFooterMenuLinkByMenuText(driver, "Search");
+        userHomePage.clickToFooterMenuLinkNopCommerceByMenuText(driver, "Search");
         userSearchPage = PageGenerateManager.getUserSearchPage(driver);
 
         ExtentTestManager.getTest().log(Status.INFO, "Advanced Search With Sub Categories - Step 02: Input '" + advancedSearchData + "' into 'Search' text box");
@@ -184,7 +184,7 @@ public class User_04_Search_Advanced_Search extends BaseTest {
         ExtentTestManager.startTest(method.getName(), "Advanced Search with incorrect manufacturer");
 
         ExtentTestManager.getTest().log(Status.INFO, "Advanced Search With Incorrect Manufacturer - Step 01: Click to 'Search' link at Footer Menu");
-        userHomePage.clickToFooterMenuLinkByMenuText(driver, "Search");
+        userHomePage.clickToFooterMenuLinkNopCommerceByMenuText(driver, "Search");
         userSearchPage = PageGenerateManager.getUserSearchPage(driver);
 
         ExtentTestManager.getTest().log(Status.INFO, "Advanced Search With Incorrect Manufacturer - Step 02: Input '" + advancedSearchData + "' into 'Search' text box");
@@ -214,7 +214,7 @@ public class User_04_Search_Advanced_Search extends BaseTest {
         ExtentTestManager.startTest(method.getName(), "Advanced Search with correct manufacturer");
 
         ExtentTestManager.getTest().log(Status.INFO, "Advanced Search With Correct Manufacturer - Step 01: Click to 'Search' link at Footer Menu");
-        userHomePage.clickToFooterMenuLinkByMenuText(driver, "Search");
+        userHomePage.clickToFooterMenuLinkNopCommerceByMenuText(driver, "Search");
         userSearchPage = PageGenerateManager.getUserSearchPage(driver);
 
         ExtentTestManager.getTest().log(Status.INFO, "Advanced Search With Correct Manufacturer - Step 02: Input '" + advancedSearchData + "' into 'Search' text box");

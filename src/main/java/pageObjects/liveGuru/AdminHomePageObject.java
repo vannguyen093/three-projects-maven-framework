@@ -1,10 +1,10 @@
-package pageObjects;
+package pageObjects.liveGuru;
 
 import commons.BasePage;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import pageUIs.AdminHomePageUI;
-import pageUIs.BasePageUI;
+import pageUIs.liveGuru.AdminHomePageUI;
+import pageUIs.liveGuru.LiveGuruBasePageUI;
 
 public class AdminHomePageObject extends BasePage {
     WebDriver driver;
@@ -40,8 +40,8 @@ public class AdminHomePageObject extends BasePage {
         return isElementUndisplayed(driver, AdminHomePageUI.ACCOUNT_TEXT_AT_ROW, accountName, email);
     }
 
-    public void selectItemAtCustomerActionDropdownByName(WebDriver driver, String actionName) {
-        waitForElementClickable(driver, BasePageUI.ACTIONS_AT_CUSTOMER_DROPDOWN);
-        selectItemInDefaultDropdown(driver, BasePageUI.ACTIONS_AT_CUSTOMER_DROPDOWN, actionName);
+    public void selectItemAtCustomerActionDropdownByName(String actionName) {
+        waitForElementClickable(driver, LiveGuruBasePageUI.ACTIONS_AT_CUSTOMER_DROPDOWN);
+        selectItemInDefaultDropdown(driver, LiveGuruBasePageUI.ACTIONS_AT_CUSTOMER_DROPDOWN, actionName);
     }
 }

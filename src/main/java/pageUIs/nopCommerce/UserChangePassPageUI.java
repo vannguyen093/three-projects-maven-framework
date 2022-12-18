@@ -1,4 +1,4 @@
-package pageUIs;
+package pageUIs.nopCommerce;
 
 public class UserChangePassPageUI {
     public static final String CHANGE_PASS_TEXTBOX_BY_ID = "xpath=//input[@id='%s']";

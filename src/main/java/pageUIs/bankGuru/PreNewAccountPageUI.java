@@ -1,4 +1,4 @@
-package pageUIs;
+package pageUIs.bankGuru;
 
 public class PreNewAccountPageUI {
 }

@@ -1,9 +1,8 @@
-package pageObjects;
+package pageObjects.liveGuru;
 
 import commons.BasePage;
 import org.openqa.selenium.WebDriver;
-import pageUIs.UserMobilePageUI;
-import pageUIs.UserTVPageUI;
+import pageUIs.liveGuru.UserMobilePageUI;
 
 public class UserMobilePageObject extends BasePage {
     WebDriver driver;
@@ -39,17 +38,19 @@ public class UserMobilePageObject extends BasePage {
         return getElementText(driver, UserMobilePageUI.PRODUCT_ADDED_COMPARE_MESSAGE_TEXT);
     }
 
-    public UserCompareWindowPageObject clickToCompareButton() {
+    public void clickToCompareButton() {
         waitForElementClickable(driver, UserMobilePageUI.COMPARE_BUTTON);
         clickToElement(driver, UserMobilePageUI.COMPARE_BUTTON);
-
-        switchToWindowByTitle(driver, getPageTitle(driver));
-        return PageGenerateManager.getUserCompareWindowPage(driver);
     }
 
     public UserProductDetailPageObject clickToProductTitleByProductName(String productName) {
         waitForElementClickable(driver, UserMobilePageUI.PRODUCT_NAME_TITLE, productName);
         clickToElement(driver, UserMobilePageUI.PRODUCT_NAME_TITLE, productName);
         return PageGenerateManager.getUserProductDetailPage(driver);
+    }
+
+    public UserCompareWindowPageObject switchToCompareWindow(String windowTitle) {
+        switchToWindowByTitle(driver, windowTitle);
+        return PageGenerateManager.getUserCompareWindowPage(driver);
     }
 }

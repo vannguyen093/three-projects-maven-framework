@@ -7,7 +7,11 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import pageUIs.BasePageUI;
+import pageObjects.liveGuru.AdminLoginPageObject;
+import pageObjects.liveGuru.PageGenerateManager;
+import pageUIs.bankGuru.BankGuruBasePageUI;
+import pageUIs.liveGuru.LiveGuruBasePageUI;
+import pageUIs.nopCommerce.NopCommerceBasePageUI;
 
 import java.util.List;
 import java.util.Set;
@@ -553,8 +557,8 @@ public class BasePage {
      * @param headerLinkClass
      */
     public void clickToHeaderLinkByText(WebDriver driver, String headerLinkClass) {
-        waitForElementClickable(driver, BasePageUI.HEADER_LINK_BY_TEXT, headerLinkClass);
-        clickToElement(driver, BasePageUI.HEADER_LINK_BY_TEXT, headerLinkClass);
+        waitForElementClickable(driver, NopCommerceBasePageUI.HEADER_LINK_BY_TEXT, headerLinkClass);
+        clickToElement(driver, NopCommerceBasePageUI.HEADER_LINK_BY_TEXT, headerLinkClass);
     }
 
     /**
@@ -563,8 +567,8 @@ public class BasePage {
      * @param sidebarMenuText
      */
     public void clickToMenuLinkAtSidebarMenuByMenuText(WebDriver driver, String sidebarMenuText) {
-        waitForElementClickable(driver, BasePageUI.USER_SIDEBAR_MENU_BY_MENU_TEXT, sidebarMenuText);
-        clickToElement(driver, BasePageUI.USER_SIDEBAR_MENU_BY_MENU_TEXT, sidebarMenuText);
+        waitForElementClickable(driver, NopCommerceBasePageUI.USER_SIDEBAR_MENU_BY_MENU_TEXT, sidebarMenuText);
+        clickToElement(driver, NopCommerceBasePageUI.USER_SIDEBAR_MENU_BY_MENU_TEXT, sidebarMenuText);
     }
 
     /**
@@ -573,8 +577,8 @@ public class BasePage {
      * @param headerMenuText
      */
     public void hoverToHeaderMenuByMenuText(WebDriver driver, String headerMenuText) {
-        waitForElementClickable(driver, BasePageUI.HEADER_MENU_BY_TEXT, headerMenuText);
-        hoverMouseToElement(driver, BasePageUI.HEADER_MENU_BY_TEXT, headerMenuText);
+        waitForElementClickable(driver, NopCommerceBasePageUI.HEADER_MENU_BY_TEXT, headerMenuText);
+        hoverMouseToElement(driver, NopCommerceBasePageUI.HEADER_MENU_BY_TEXT, headerMenuText);
     }
 
     /**
@@ -585,8 +589,8 @@ public class BasePage {
      */
     public void clickToSubHeaderMenuByText(WebDriver driver, String headerMenuText, String headerSubMenuText) {
         hoverToHeaderMenuByMenuText(driver, headerMenuText);
-        waitForElementClickable(driver, BasePageUI.SUB_HEADER_MENU_BY_TEXT, headerMenuText, headerSubMenuText);
-        clickToElement(driver, BasePageUI.SUB_HEADER_MENU_BY_TEXT, headerMenuText, headerSubMenuText);
+        waitForElementClickable(driver, NopCommerceBasePageUI.SUB_HEADER_MENU_BY_TEXT, headerMenuText, headerSubMenuText);
+        clickToElement(driver, NopCommerceBasePageUI.SUB_HEADER_MENU_BY_TEXT, headerMenuText, headerSubMenuText);
     }
 
     /**
@@ -594,39 +598,116 @@ public class BasePage {
      * @param driver
      * @param footerMenuText
      */
-    public void clickToFooterMenuLinkByMenuText(WebDriver driver, String footerMenuText) {
-        waitForElementClickable(driver, BasePageUI.FOOTER_MENU_BY_MENU_TEXT, footerMenuText);
-        clickToElement(driver, BasePageUI.FOOTER_MENU_BY_MENU_TEXT, footerMenuText);
+    public void clickToFooterMenuLinkNopCommerceByMenuText(WebDriver driver, String footerMenuText) {
+        waitForElementClickable(driver, NopCommerceBasePageUI.FOOTER_MENU_BY_MENU_TEXT, footerMenuText);
+        clickToElement(driver, NopCommerceBasePageUI.FOOTER_MENU_BY_MENU_TEXT, footerMenuText);
     }
 
     public String getSuccessMessageText(WebDriver driver) {
         areJQueryAndJSLoadedSuccessByJS(driver);
-        waitForElementVisible(driver, BasePageUI.CHANGE_PASS_SUCCESSFUL_MESSAGE_TEXT);
-        return getElementText(driver, BasePageUI.CHANGE_PASS_SUCCESSFUL_MESSAGE_TEXT);
+        waitForElementVisible(driver, NopCommerceBasePageUI.CHANGE_PASS_SUCCESSFUL_MESSAGE_TEXT);
+        return getElementText(driver, NopCommerceBasePageUI.CHANGE_PASS_SUCCESSFUL_MESSAGE_TEXT);
     }
 
     public void clickToCloseMessageButton(WebDriver driver) {
-        waitForElementClickable(driver, BasePageUI.CLOSE_MESSAGE_BUTTON);
-        clickToElement(driver, BasePageUI.CLOSE_MESSAGE_BUTTON);
+        waitForElementClickable(driver, NopCommerceBasePageUI.CLOSE_MESSAGE_BUTTON);
+        clickToElement(driver, NopCommerceBasePageUI.CLOSE_MESSAGE_BUTTON);
     }
 
     public void hoverToAddToCartButton(WebDriver driver, String headerLinkText) {
-        waitForElementClickable(driver, BasePageUI.HEADER_LINK_BY_TEXT, headerLinkText);
-        hoverMouseToElement(driver, BasePageUI.HEADER_LINK_BY_TEXT, headerLinkText);
+        waitForElementClickable(driver, NopCommerceBasePageUI.HEADER_LINK_BY_TEXT, headerLinkText);
+        hoverMouseToElement(driver, NopCommerceBasePageUI.HEADER_LINK_BY_TEXT, headerLinkText);
     }
 
     public void waitLoadingIconInvisible(WebDriver driver) {
-        waitForElementInvisible(driver, BasePageUI.AJAX_PRODUCT_BUSY_ICON);
+        waitForElementInvisible(driver, NopCommerceBasePageUI.AJAX_PRODUCT_BUSY_ICON);
     }
 
     public void clickToAdminSidebarMenuByMenuText(WebDriver driver, String sidebarMenuText) {
-        waitForElementClickable(driver, BasePageUI.ADMIN_SIDEBAR_MENU_BY_MENU_TEXT, sidebarMenuText);
-        clickToElement(driver, BasePageUI.ADMIN_SIDEBAR_MENU_BY_MENU_TEXT, sidebarMenuText);
+        waitForElementClickable(driver, NopCommerceBasePageUI.ADMIN_SIDEBAR_MENU_BY_MENU_TEXT, sidebarMenuText);
+        clickToElement(driver, NopCommerceBasePageUI.ADMIN_SIDEBAR_MENU_BY_MENU_TEXT, sidebarMenuText);
     }
 
     public void clickToAdminSubSidebarMenuByMenuText(WebDriver driver, String sidebarMenuText, String subSidebarMenuText) {
         clickToAdminSidebarMenuByMenuText(driver, sidebarMenuText);
-        waitForElementClickable(driver, BasePageUI.ADMIN_SUB_SIDEBAR_MENU_BY_MENU_TEXT, sidebarMenuText, subSidebarMenuText);
-        clickToElement(driver, BasePageUI.ADMIN_SUB_SIDEBAR_MENU_BY_MENU_TEXT, sidebarMenuText, subSidebarMenuText);
+        waitForElementClickable(driver, NopCommerceBasePageUI.ADMIN_SUB_SIDEBAR_MENU_BY_MENU_TEXT, sidebarMenuText, subSidebarMenuText);
+        clickToElement(driver, NopCommerceBasePageUI.ADMIN_SUB_SIDEBAR_MENU_BY_MENU_TEXT, sidebarMenuText, subSidebarMenuText);
+    }
+    public void clickToFooterMenuLinkLiveGuruByMenuText(WebDriver driver, String footerMenuText) {
+        waitForElementClickable(driver, LiveGuruBasePageUI.FOOTER_MENU_LINK_BY_MENU_TEXT, footerMenuText);
+        clickToElement(driver, LiveGuruBasePageUI.FOOTER_MENU_LINK_BY_MENU_TEXT, footerMenuText);
+    }
+
+    public void clickToHeaderAccountLink(WebDriver driver) {
+        waitForElementClickable(driver, LiveGuruBasePageUI.HEADER_ACOUNT_LINK);
+        clickToElement(driver, LiveGuruBasePageUI.HEADER_ACOUNT_LINK);
+    }
+
+    public void clickToAccountMenuLinkByMenuText(WebDriver driver, String accountMenuText) {
+        clickToHeaderAccountLink(driver);
+        waitForElementClickable(driver, LiveGuruBasePageUI.ACCOUNT_MENU_LINK_BY_MENU_TEXT, accountMenuText);
+        clickToElement(driver, LiveGuruBasePageUI.ACCOUNT_MENU_LINK_BY_MENU_TEXT, accountMenuText);
+    }
+
+    public void clickToSidebarMenuLinkByMenuText(WebDriver driver, String sidebarMenuText) {
+        waitForElementClickable(driver, LiveGuruBasePageUI.SIDEBAR_MENU_LINK_BY_MENU_TEXT, sidebarMenuText);
+        clickToElement(driver, LiveGuruBasePageUI.SIDEBAR_MENU_LINK_BY_MENU_TEXT, sidebarMenuText);
+    }
+
+    public void clickToHeaderMenuLinkByMenuText(WebDriver driver, String headerMenuText) {
+        waitForElementClickable(driver, LiveGuruBasePageUI.HEADER_MENU_LINK_BY_MENU_TEXT, headerMenuText);
+        clickToElement(driver, LiveGuruBasePageUI.HEADER_MENU_LINK_BY_MENU_TEXT, headerMenuText);
+    }
+
+    public void clickToButtonAtAdminSiteByButtonTitle(WebDriver driver, String buttonTitle) {
+        waitForElementClickable(driver, LiveGuruBasePageUI.BUTTON_AT_ADMIN_SITE_BY_BUTTON_TITLE, buttonTitle);
+        clickToElement(driver, LiveGuruBasePageUI.BUTTON_AT_ADMIN_SITE_BY_BUTTON_TITLE, buttonTitle);
+    }
+
+    public boolean isMessageAtAdminSiteDisplayed(WebDriver driver) {
+        waitForElementVisible(driver, LiveGuruBasePageUI.SUCCESS_DELETE_MESSAGE_AT_ADMIN_SITE_TEXT);
+        return isElementDisplayed(driver, LiveGuruBasePageUI.SUCCESS_DELETE_MESSAGE_AT_ADMIN_SITE_TEXT);
+    }
+
+    public void hoverToMenuLevel0ByMenuText(WebDriver driver, String level0MenuText){
+        waitForElementClickable(driver, LiveGuruBasePageUI.ADMIN_MENU_LEVEL_0_LINK_BY_MENU_TEXT, level0MenuText);
+        hoverMouseToElement(driver, LiveGuruBasePageUI.ADMIN_MENU_LEVEL_0_LINK_BY_MENU_TEXT, level0MenuText);
+    }
+
+    public void clickToSubMenuLevel1BySubMenuText(WebDriver driver, String level0MenuText, String level1MenuText) {
+        hoverToMenuLevel0ByMenuText(driver, level0MenuText);
+
+        waitForElementClickable(driver, LiveGuruBasePageUI.SUB_ADMIN_MENU_LEVEL_1_LINK_BY_MENU_TEXT, level0MenuText, level1MenuText);
+        clickToElement(driver, LiveGuruBasePageUI.SUB_ADMIN_MENU_LEVEL_1_LINK_BY_MENU_TEXT, level0MenuText, level1MenuText);
+    }
+
+    public void clickToSubMenuLevel2BySubMenuText(WebDriver driver, String level0MenuText, String level1MenuText, String level2MenuText) {
+        clickToSubMenuLevel1BySubMenuText(driver, level0MenuText, level1MenuText);
+
+        waitForElementClickable(driver, LiveGuruBasePageUI.SUB_ADMIN_MENU_LEVEL_2_LINK_BY_MENU_TEXT, level0MenuText, level2MenuText);
+        clickToElement(driver, LiveGuruBasePageUI.SUB_ADMIN_MENU_LEVEL_2_LINK_BY_MENU_TEXT, level0MenuText, level2MenuText);
+    }
+
+    public void clickToSubMenuLevel3BySubMenuText(WebDriver driver, String level0MenuText, String level1MenuText, String level2MenuText, String level3MenuText) {
+        clickToSubMenuLevel2BySubMenuText(driver, level0MenuText, level1MenuText, level2MenuText);
+
+        waitForElementClickable(driver, LiveGuruBasePageUI.SUB_ADMIN_MENU_LEVEL_3_LINK_BY_MENU_TEXT, level0MenuText, level3MenuText);
+        clickToElementByJS(driver, LiveGuruBasePageUI.SUB_ADMIN_MENU_LEVEL_3_LINK_BY_MENU_TEXT, level0MenuText, level3MenuText);
+    }
+
+    public AdminLoginPageObject clickToLogoutLinkAtAdminSite(WebDriver driver){
+        waitForElementClickable(driver, LiveGuruBasePageUI.LOGOUT_LINK);
+        clickToElement(driver, LiveGuruBasePageUI.LOGOUT_LINK);
+        return PageGenerateManager.getAdminLoginPage(driver);
+    }
+
+    public void clickToMenuLinkByMenuText(WebDriver driver, String menuText) {
+        waitForElementClickable(driver, BankGuruBasePageUI.MENU_LINK_BY_MENU_TEXT, menuText);
+        clickToElement(driver, BankGuruBasePageUI.MENU_LINK_BY_MENU_TEXT, menuText);
+    }
+
+    public void clickToSubmitButton(WebDriver driver) {
+        waitForElementClickable(driver, BankGuruBasePageUI.SUBMIT_BUTTON);
+        clickToElement(driver, BankGuruBasePageUI.SUBMIT_BUTTON);
     }
 }

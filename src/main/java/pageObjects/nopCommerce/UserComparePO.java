@@ -1,9 +1,9 @@
-package pageObjects;
+package pageObjects.nopCommerce;
 
 import commons.BasePage;
 import org.openqa.selenium.WebDriver;
-import pageUIs.UserComparePageUI;
-import pageUIs.UserProductPageUI;
+import pageUIs.nopCommerce.UserComparePageUI;
+import pageUIs.nopCommerce.UserProductPageUI;
 
 public class UserComparePO extends BasePage {
     WebDriver driver;

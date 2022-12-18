@@ -1,4 +1,4 @@
-package pageUIs;
+package pageUIs.nopCommerce;
 
 public class UserSearchPageUI {
     public static final String SEARCH_TEXTBOX = "xpath=//input[@id='q']";

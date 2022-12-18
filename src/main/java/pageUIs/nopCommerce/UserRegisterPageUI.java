@@ -1,4 +1,4 @@
-package pageUIs;
+package pageUIs.nopCommerce;
 
 public class UserRegisterPageUI {
     public static final String GENDER_RADIO_BY_TEXT = "xpath=//label[normalize-space()='%s']//preceding-sibling::input";

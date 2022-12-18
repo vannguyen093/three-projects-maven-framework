@@ -1,8 +1,8 @@
-package pageObjects;
+package pageObjects.nopCommerce;
 
 import commons.BasePage;
 import org.openqa.selenium.WebDriver;
-import pageUIs.UserCartPageUI;
+import pageUIs.nopCommerce.UserCartPageUI;
 
 public class UserCartPO extends BasePage {
     WebDriver driver;

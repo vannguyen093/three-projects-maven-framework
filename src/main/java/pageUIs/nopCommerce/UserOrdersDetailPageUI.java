@@ -1,4 +1,4 @@
-package pageUIs;
+package pageUIs.nopCommerce;
 
 public class UserOrdersDetailPageUI {
     public static final String ORDER_TOTAL_PRICE_TEXT = "xpath=//li[@class='order-total']//strong[contains(text(),'%s')]";

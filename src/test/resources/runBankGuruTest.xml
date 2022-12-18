@@ -12,11 +12,16 @@
         <!--        <listener class-name="org.uncommons.reportng.JUnitXMLReporter" />-->
     </listeners>
 
-    <test name="Run on Firefox">
-        <parameter name="browser" value="Firefox"/>
-        <classes>
-            <class name="com.bankguru.payment.Payment_01"/>
-        </classes>
+    <test name="Run on Chrome">
+        <parameter name="browser" value="Chrome"/>
+
+        <packages>
+            <package name="com.bankGuru"/>
+        </packages>
+
+<!--        <classes>-->
+<!--            <class name="com.bankguru.payment.Payment_01"/>-->
+<!--        </classes>-->
     </test>
 
 </suite>

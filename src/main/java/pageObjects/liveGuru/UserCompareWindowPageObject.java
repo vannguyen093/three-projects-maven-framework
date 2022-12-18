@@ -1,8 +1,8 @@
-package pageObjects;
+package pageObjects.liveGuru;
 
 import commons.BasePage;
 import org.openqa.selenium.WebDriver;
-import pageUIs.UserCompareWindowPageUI;
+import pageUIs.liveGuru.UserCompareWindowPageUI;
 
 public class UserCompareWindowPageObject extends BasePage {
     WebDriver driver;
@@ -21,9 +21,9 @@ public class UserCompareWindowPageObject extends BasePage {
         return isElementDisplayed(driver, UserCompareWindowPageUI.PRODUCT_TITLE_TEXT, productName);
     }
 
-    public boolean isProductImageDisplayed(String productName, String imgName) {
-        waitForElementVisible(driver, UserCompareWindowPageUI.PRODUCT_IMG_TEXT, productName, imgName);
-        return isElementDisplayed(driver, UserCompareWindowPageUI.PRODUCT_IMG_TEXT, productName, imgName);
+    public boolean isProductImageDisplayed(String productName) {
+        waitForElementVisible(driver, UserCompareWindowPageUI.PRODUCT_IMG_TEXT, productName);
+        return isElementDisplayed(driver, UserCompareWindowPageUI.PRODUCT_IMG_TEXT, productName);
     }
 
     public boolean isProductPriceDisplayed(String productName) {
@@ -36,8 +36,8 @@ public class UserCompareWindowPageObject extends BasePage {
         return isElementDisplayed(driver, UserCompareWindowPageUI.PRODUCT_SKU_TEXT, skuText);
     }
 
-    public UserMobilePageObject closeCompareWindow() {
-        closeAllWindowsWithoutParent(driver, getPageID(driver));
+    public UserMobilePageObject closeCompareWindow(String parentId) {
+        closeAllWindowsWithoutParent(driver, parentId);
         return PageGenerateManager.getUserMobilePage(driver);
     }
 }

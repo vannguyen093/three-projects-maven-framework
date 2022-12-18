@@ -1,4 +1,4 @@
-package pageUIs;
+package pageUIs.liveGuru;
 
 public class UserCartPageUI {
     public static final String CART_MESSAGE_TEXT = "xpath=//ul[@class='messages']//span";

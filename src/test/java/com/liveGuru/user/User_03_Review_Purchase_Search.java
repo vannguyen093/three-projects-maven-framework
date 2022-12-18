@@ -1,24 +1,20 @@
-package com.user;
+package com.liveGuru.user;
 
 import com.aventstack.extentreports.Status;
 import commons.BaseTest;
 import org.aeonbits.owner.ConfigFactory;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.*;
-import pageObjects.*;
+import pageObjects.liveGuru.*;
 import reportConfig.ExtentTestManager;
-import ultilities.DataHelper;
 import ultilities.Environment;
+import ultilities.LiveGuruDataHelper;
 
 import java.lang.reflect.Method;
 
 public class User_03_Review_Purchase_Search extends BaseTest {
-    private WebDriver driver;
     Environment env;
-    DataHelper dataHelper;
-    private String firstName, lastName, emailAddress, password;
-    private String address, country, state, city, zip, telephone;
-    private String yourThoughtText, yourReviewText;
+    LiveGuruDataHelper liveGuruDataHelper;
     UserHomePageObject userHomePage;
     UserProductDetailPageObject userProductDetailPage;
     UserCartPageObject userCartPage;
@@ -31,6 +27,11 @@ public class User_03_Review_Purchase_Search extends BaseTest {
     UserSuccessCheckOutPageObject userSuccessCheckOutPage;
     UserAdvancedSearchPageObject userAdvancedSearchPage;
     UserSearchResultPageObject userSearchResultPage;
+    private WebDriver driver;
+    private String firstName, lastName, emailAddress, password;
+    private String address, country, state, city, zip, telephone;
+    private String yourThoughtText, yourReviewText;
+
     @Parameters({"browser", "evnName", "ipAddress", "portNumber", "osName", "osVersion"})
     @BeforeClass
     public void beforeClass(@Optional("firefox") String browserName, @Optional("local") String evnName, @Optional("Windows") String osName, @Optional("10") String osVersion, @Optional("localhost") String ipAddress, @Optional("4444") String portNumber) {
@@ -38,26 +39,26 @@ public class User_03_Review_Purchase_Search extends BaseTest {
         ConfigFactory.setProperty("env", environmentName);
         env = ConfigFactory.create(Environment.class);
 
-        driver = getBrowserDriver(browserName, env.userUrl(), evnName, osName, osVersion, ipAddress, portNumber);
-        dataHelper = DataHelper.getDataHelper();
+        driver = getBrowserDriver(browserName, env.userLiveGuruUrl(), evnName, osName, osVersion, ipAddress, portNumber);
+        liveGuruDataHelper = LiveGuruDataHelper.getDataHelper();
 
         userHomePage = PageGenerateManager.getUserHomePage(driver);
 
-        firstName = dataHelper.getFirstName();
-        lastName = dataHelper.getLastName();
-        emailAddress = dataHelper.getEmail();
-        password = dataHelper.getPassword();
-        address = dataHelper.getAddress();
+        firstName = liveGuruDataHelper.getFirstName();
+        lastName = liveGuruDataHelper.getLastName();
+        emailAddress = liveGuruDataHelper.getEmail();
+        password = liveGuruDataHelper.getPassword();
+        address = liveGuruDataHelper.getAddress();
         country = "United States";
         state = "California";
-        city = dataHelper.getCity();
+        city = liveGuruDataHelper.getCity();
         zip = "23";
-        telephone = dataHelper.getTelephone();
+        telephone = liveGuruDataHelper.getTelephone();
 
         yourThoughtText = "This is my review " + generateFakeNumber();
         yourReviewText = "Review " + generateFakeNumber();
 
-        userHomePage.clickToFooterMenuLinkByMenuText(driver, "My Account");
+        userHomePage.clickToFooterMenuLinkLiveGuruByMenuText(driver, "My Account");
         userLoginPage = PageGenerateManager.getUserLoginPage(driver);
 
         userRegisterPage = userLoginPage.clickToCreateAccountButton();
@@ -134,7 +135,7 @@ public class User_03_Review_Purchase_Search extends BaseTest {
         userCartPage.clickToButtonAtAdminSiteByButtonTitle("Estimate");
 
         ExtentTestManager.getTest().log(Status.INFO, "Purchase Product - Step 07: Verify 'Flat Rate' is displayed with value 'Fixed - $5.00'");
-        verifyEquals(userCartPage.getFixedFlatRateText(),"$5.00");
+        verifyEquals(userCartPage.getFixedFlatRateText(), "$5.00");
 
         ExtentTestManager.getTest().log(Status.INFO, "Purchase Product - Step 08: Select' Fixed cost' radio at 'Flat Rate' field");
         userCartPage.checkToFixedRadio();
@@ -143,10 +144,10 @@ public class User_03_Review_Purchase_Search extends BaseTest {
         userCartPage.clickToButtonAtAdminSiteByButtonTitle("Update Total");
 
         ExtentTestManager.getTest().log(Status.INFO, "Purchase Product - Step 10: Verify 'Shipping & Handling' is displayed");
-        verifyEquals(userCartPage.getShippingHandlingText(),"$5.00");
+        verifyEquals(userCartPage.getShippingHandlingText(), "$5.00");
 
         ExtentTestManager.getTest().log(Status.INFO, "Purchase Product - Step 11: Verify shipping cost is added to total with value '$705'");
-        verifyEquals(userCartPage.getGrandTotalText(),"$705.00");
+        verifyEquals(userCartPage.getGrandTotalText(), "$705.00");
 
         ExtentTestManager.getTest().log(Status.INFO, "Purchase Product - Step 12: Click to 'Proceed To Checkout' button");
         userCartPage.clickToButtonAtAdminSiteByButtonTitle("Proceed to Checkout");
@@ -192,7 +193,7 @@ public class User_03_Review_Purchase_Search extends BaseTest {
         ExtentTestManager.startTest(method.getName(), "Search Product");
 
         ExtentTestManager.getTest().log(Status.INFO, "Search Product - Step 01: Click to 'Advanced Search' link");
-        userSuccessCheckOutPage.clickToFooterMenuLinkByMenuText(driver, "Advanced Search");
+        userSuccessCheckOutPage.clickToFooterMenuLinkLiveGuruByMenuText(driver, "Advanced Search");
         userAdvancedSearchPage = PageGenerateManager.getUserAdvancedSearchPage(driver);
 
         ExtentTestManager.getTest().log(Status.INFO, "Search Product - Step 02: Input 'Price' text box with value range: '0 - 150'");
@@ -206,7 +207,7 @@ public class User_03_Review_Purchase_Search extends BaseTest {
         verifyEquals(userSearchResultPage.getSearchResultSize(), 2);
 
         ExtentTestManager.getTest().log(Status.INFO, "Search Product - Step 05: Click to 'Advanced Search' link");
-        userSearchResultPage.clickToFooterMenuLinkByMenuText(driver, "Advanced Search");
+        userSearchResultPage.clickToFooterMenuLinkLiveGuruByMenuText(driver, "Advanced Search");
         userAdvancedSearchPage = PageGenerateManager.getUserAdvancedSearchPage(driver);
 
         ExtentTestManager.getTest().log(Status.INFO, "Search Product - Step 06: Input 'Price' text box with value range: '151 - 1000'");
@@ -216,7 +217,7 @@ public class User_03_Review_Purchase_Search extends BaseTest {
         ExtentTestManager.getTest().log(Status.INFO, "Search Product - Step 07: Click to 'Search' button");
         userSearchResultPage = userAdvancedSearchPage.clickToSearchButton();
 
-        ExtentTestManager.getTest().log(Status.INFO, "Search Product - Step 08: Verify that the search result contains two items");
+        ExtentTestManager.getTest().log(Status.INFO, "Search Product - Step 08: Verify that the search result contains three items");
         verifyEquals(userSearchResultPage.getSearchResultSize(), 3);
     }
 

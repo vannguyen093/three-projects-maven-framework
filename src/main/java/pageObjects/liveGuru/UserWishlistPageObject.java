@@ -1,8 +1,8 @@
-package pageObjects;
+package pageObjects.liveGuru;
 
 import commons.BasePage;
 import org.openqa.selenium.WebDriver;
-import pageUIs.UserWishlistPageUI;
+import pageUIs.liveGuru.UserWishlistPageUI;
 
 public class UserWishlistPageObject extends BasePage {
     WebDriver driver;

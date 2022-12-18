@@ -1,9 +1,9 @@
-package pageObjects;
+package pageObjects.nopCommerce;
 
 import commons.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import pageUIs.UserProductPageUI;
+import pageUIs.nopCommerce.UserProductPageUI;
 
 import java.util.ArrayList;
 import java.util.Collections;

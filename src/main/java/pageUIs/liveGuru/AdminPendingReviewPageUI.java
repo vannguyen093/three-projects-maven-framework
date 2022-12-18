@@ -1,4 +1,4 @@
-package pageUIs;
+package pageUIs.liveGuru;
 
 public class AdminPendingReviewPageUI {
     public static final String PENDING_REVIEW_TAB_BY_TAB_NAME = "xpath=//tr[@class='headings']//a[@name='%s']";

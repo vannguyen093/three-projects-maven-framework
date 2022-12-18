@@ -1,9 +1,8 @@
-package pageObjects;
+package pageObjects.liveGuru;
 
 import commons.BasePage;
 import org.openqa.selenium.WebDriver;
-import pageUIs.AdminHomePageUI;
-import pageUIs.AdminLoginPageUI;
+import pageUIs.liveGuru.AdminLoginPageUI;
 
 public class AdminLoginPageObject extends BasePage {
     WebDriver driver;

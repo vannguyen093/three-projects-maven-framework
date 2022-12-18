@@ -1,4 +1,4 @@
-package pageUIs;
+package pageUIs.nopCommerce;
 
 public class UserProductReviewPageUI {
     public static final String PRODUCT_REVIEW_TEXTBOX_BY_ID = "xpath=//%s[@id='%s']";

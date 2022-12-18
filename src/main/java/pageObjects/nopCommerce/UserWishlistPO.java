@@ -1,8 +1,8 @@
-package pageObjects;
+package pageObjects.nopCommerce;
 
 import commons.BasePage;
 import org.openqa.selenium.WebDriver;
-import pageUIs.UserWishlistPageUI;
+import pageUIs.nopCommerce.UserWishlistPageUI;
 
 public class UserWishlistPO extends BasePage {
     WebDriver driver;

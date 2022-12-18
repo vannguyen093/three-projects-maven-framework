@@ -1,4 +1,4 @@
-package pageUIs;
+package pageUIs.nopCommerce;
 
 public class UserOrdersPageUI {
     public static final String ORDER_NUMBER_TEXT = "xpath=//div[@class='section order-item']//div[@class='title']/strong";

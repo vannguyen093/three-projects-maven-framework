@@ -1,8 +1,8 @@
-package pageObjects;
+package pageObjects.nopCommerce;
 
 import commons.BasePage;
 import org.openqa.selenium.WebDriver;
-import pageUIs.UserCheckOutPageUI;
+import pageUIs.nopCommerce.UserCheckOutPageUI;
 
 public class UserCheckOutPO extends BasePage {
     WebDriver driver;

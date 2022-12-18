@@ -1,4 +1,4 @@
-package com.user;
+package com.liveGuru.user;
 
 import com.aventstack.extentreports.Status;
 import commons.BaseTest;
@@ -6,24 +6,25 @@ import commons.GlobalConstants;
 import org.aeonbits.owner.ConfigFactory;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.*;
-import pageObjects.*;
+import pageObjects.liveGuru.*;
 import reportConfig.ExtentTestManager;
-import ultilities.DataHelper;
+import ultilities.BankGuruDataHelper;
 import ultilities.Environment;
+import ultilities.LiveGuruDataHelper;
 
 import java.lang.reflect.Method;
 
 public class User_01_Register_Login extends BaseTest {
-    private WebDriver driver;
-    private String firstName, lastName, emailAddress, password;
-    DataHelper dataHelper;
+    LiveGuruDataHelper liveGuruDataHelper;
     Environment env;
     UserHomePageObject userHomePage;
     UserLoginPageObject userLoginPage;
     UserRegisterPageObject userRegisterPage;
     UserMyDashboardPageObject userMyDashboardPage;
     UserAccountInfoPageObject userAccountInfoPage;
-    AdminHomePageObject adminHomePage;
+    private WebDriver driver;
+    private String firstName, lastName, emailAddress, password;
+
     @Parameters({"browser", "evnName", "ipAddress", "portNumber", "osName", "osVersion"})
     @BeforeClass
     public void beforeClass(@Optional("firefox") String browserName, @Optional("local") String evnName, @Optional("Windows") String osName, @Optional("10") String osVersion, @Optional("localhost") String ipAddress, @Optional("4444") String portNumber) {
@@ -31,15 +32,15 @@ public class User_01_Register_Login extends BaseTest {
         ConfigFactory.setProperty("env", environmentName);
         env = ConfigFactory.create(Environment.class);
 
-        driver = getBrowserDriver(browserName, env.userUrl(), evnName, osName, osVersion, ipAddress, portNumber);
-        dataHelper = DataHelper.getDataHelper();
+        driver = getBrowserDriver(browserName, env.userLiveGuruUrl(), evnName, osName, osVersion, ipAddress, portNumber);
+        liveGuruDataHelper = LiveGuruDataHelper.getDataHelper();
 
         userHomePage = PageGenerateManager.getUserHomePage(driver);
 
-        firstName = dataHelper.getFirstName();
-        lastName = dataHelper.getLastName();
-        emailAddress = dataHelper.getEmail();
-        password = dataHelper.getPassword();
+        firstName = liveGuruDataHelper.getFirstName();
+        lastName = liveGuruDataHelper.getLastName();
+        emailAddress = liveGuruDataHelper.getEmail();
+        password = liveGuruDataHelper.getPassword();
     }
 
     @Test
@@ -47,7 +48,7 @@ public class User_01_Register_Login extends BaseTest {
         ExtentTestManager.startTest(method.getName(), "Create Account");
 
         ExtentTestManager.getTest().log(Status.INFO, "Create Account - Step 01: Click to 'My Account' link");
-        userHomePage.clickToFooterMenuLinkByMenuText(driver, "My Account");
+        userHomePage.clickToFooterMenuLinkLiveGuruByMenuText(driver, "My Account");
         userLoginPage = PageGenerateManager.getUserLoginPage(driver);
 
         ExtentTestManager.getTest().log(Status.INFO, "Create Account - Step 02: Click to 'Create An Account' button");
@@ -80,7 +81,7 @@ public class User_01_Register_Login extends BaseTest {
         ExtentTestManager.startTest(method.getName(), "Verify user info after registered");
 
         ExtentTestManager.getTest().log(Status.INFO, "Verify User Info - Step 01: Click to 'Account Information' link at menu link");
-        userMyDashboardPage.clickToSidebarMenuLinkByMenuText(driver,"Account Information");
+        userMyDashboardPage.clickToSidebarMenuLinkByMenuText(driver, "Account Information");
         userAccountInfoPage = PageGenerateManager.getUserAccountInfoPage(driver);
 
         ExtentTestManager.getTest().log(Status.INFO, "Verify User Info - Step 02: Verify data at 'First Name' text box is correctly with value '" + firstName + "'");
@@ -102,11 +103,11 @@ public class User_01_Register_Login extends BaseTest {
         ExtentTestManager.startTest(method.getName(), "Login to system after log out");
 
         ExtentTestManager.getTest().log(Status.INFO, "Login - Step 01: Open User site");
-        adminHomePage.openPageUrl(driver, GlobalConstants.USER_URL);
+        userHomePage.openPageUrl(driver, GlobalConstants.USER_LIVE_GURU_URL);
         userHomePage = PageGenerateManager.getUserHomePage(driver);
 
         ExtentTestManager.getTest().log(Status.INFO, "Login - Step 02: Click to 'My Account' link");
-        userHomePage.clickToFooterMenuLinkByMenuText(driver, "My Account");
+        userHomePage.clickToFooterMenuLinkLiveGuruByMenuText(driver, "My Account");
         userLoginPage = PageGenerateManager.getUserLoginPage(driver);
 
         ExtentTestManager.getTest().log(Status.INFO, "Login - Step 03: Input to 'Email Address' text box with registered email: '" + emailAddress + "'");

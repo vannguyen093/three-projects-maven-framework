@@ -1,4 +1,4 @@
-package pageUIs;
+package pageUIs.liveGuru;
 
 public class UserWishlistPageUI {
     public static final String PRODUCT_ADDED_WISHLIST_MESSAGE_TEXT = "xpath=//ul[@class='messages']//span";

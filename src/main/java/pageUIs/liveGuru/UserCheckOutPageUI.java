@@ -1,4 +1,4 @@
-package pageUIs;
+package pageUIs.liveGuru;
 
 public class UserCheckOutPageUI {
     public static final String BILLING_INFO_TEXTBOX_BY_TEXTBOX_ID = "xpath=//input[contains(@title,'%s')]";

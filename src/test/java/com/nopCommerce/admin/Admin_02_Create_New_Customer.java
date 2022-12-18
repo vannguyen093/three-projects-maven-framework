@@ -1,8 +1,8 @@
-package com.admin;
+package com.nopCommerce.admin;
 
 import com.aventstack.extentreports.Status;
 import commons.BaseTest;
-import data.AdminDataMapper;
+import data.nopCommerce.NopCommerceAdminDataMapper;
 import org.aeonbits.owner.ConfigFactory;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
@@ -18,7 +18,7 @@ import java.lang.reflect.Method;
 
 public class Admin_02_Create_New_Customer extends BaseTest {
 
-    AdminDataMapper adminData;
+    NopCommerceAdminDataMapper adminData;
     Environment env;
     AdminLoginPO adminLoginPage;
     AdminDashboardPO adminDashboardPage;
@@ -34,8 +34,8 @@ public class Admin_02_Create_New_Customer extends BaseTest {
         ConfigFactory.setProperty("env", environmentName);
         env = ConfigFactory.create(Environment.class);
 
-        driver = getBrowserDriver(browserName, env.adminUrl(), evnName, osName, osVersion, ipAddress, portNumber);
-        adminData = AdminDataMapper.getAdminData();
+        driver = getBrowserDriver(browserName, env.adminNopCommerceUrl(), evnName, osName, osVersion, ipAddress, portNumber);
+        adminData = NopCommerceAdminDataMapper.getAdminData();
 
         adminLoginPage = PageGenerateManager.getAdminLoginPage(driver);
 

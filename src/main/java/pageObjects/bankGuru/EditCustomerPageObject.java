@@ -1,8 +1,8 @@
-package pageObjects;
+package pageObjects.bankGuru;
 
 import commons.BasePage;
 import org.openqa.selenium.WebDriver;
-import pageUIs.EditCustomerPageUI;
+import pageUIs.bankGuru.EditCustomerPageUI;
 
 public class EditCustomerPageObject extends BasePage {
     WebDriver driver;

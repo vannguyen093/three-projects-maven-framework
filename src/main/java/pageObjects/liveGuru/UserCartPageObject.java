@@ -1,9 +1,9 @@
-package pageObjects;
+package pageObjects.liveGuru;
 
 import commons.BasePage;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import pageUIs.UserCartPageUI;
+import pageUIs.liveGuru.UserCartPageUI;
 
 public class UserCartPageObject extends BasePage {
     WebDriver driver;

@@ -1,9 +1,9 @@
-package pageObjects;
+package pageObjects.liveGuru;
 
 import commons.BasePage;
 import org.openqa.selenium.WebDriver;
-import pageUIs.AdminPendingReviewPageUI;
-import pageUIs.BasePageUI;
+import pageUIs.liveGuru.AdminPendingReviewPageUI;
+import pageUIs.liveGuru.LiveGuruBasePageUI;
 
 public class AdminPendingReviewPageObject extends BasePage {
     WebDriver driver;
@@ -13,7 +13,7 @@ public class AdminPendingReviewPageObject extends BasePage {
     }
 
     public void clickToTabByTabName(String tabName) {
-        waitForElementInvisible(driver, BasePageUI.LOADING_MASK);
+        waitForElementInvisible(driver, LiveGuruBasePageUI.LOADING_MASK);
         waitForElementClickable(driver, AdminPendingReviewPageUI.PENDING_REVIEW_TAB_BY_TAB_NAME, tabName);
         clickToElement(driver, AdminPendingReviewPageUI.PENDING_REVIEW_TAB_BY_TAB_NAME, tabName);
     }

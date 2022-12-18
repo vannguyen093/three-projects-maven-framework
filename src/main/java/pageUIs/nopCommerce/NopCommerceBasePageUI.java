@@ -1,6 +1,6 @@
 package pageUIs.nopCommerce;
 
-public class BasePageUI {
+public class NopCommerceBasePageUI {
     public static final String HEADER_LINK_BY_TEXT = "xpath=//div[@class='header-links']//a[@class='%s']";
     public static final String SUB_HEADER_MENU_BY_TEXT = "xpath=//ul[@class='top-menu notmobile']//a[normalize-space()='%s']/..//a[normalize-space()='%s']";
     public static final String HEADER_MENU_BY_TEXT = "xpath=//ul[@class='top-menu notmobile']//a[normalize-space()='%s']";

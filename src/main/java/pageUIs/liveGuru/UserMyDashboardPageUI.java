@@ -1,4 +1,4 @@
-package pageUIs;
+package pageUIs.liveGuru;
 
 public class UserMyDashboardPageUI {
     public static final String REGISTERED_SUCCESSFULLY_MESSAGE_TEXT = "xpath=//ul[@class='messages']//span";

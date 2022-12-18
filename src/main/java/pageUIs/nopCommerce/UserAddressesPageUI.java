@@ -1,4 +1,4 @@
-package pageUIs;
+package pageUIs.nopCommerce;
 
 public class UserAddressesPageUI {
     public static final String ADDRESSES_BUTTON_BY_BUTTON_TEXT = "xpath=//button[normalize-space()='%s']";
